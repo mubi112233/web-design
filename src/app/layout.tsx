@@ -1,0 +1,125 @@
+import type { Metadata, Viewport } from "next";
+import { Inter, Poppins } from "next/font/google";
+import "./globals.css";
+import "@/styles/main.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/toaster";
+import { DesignSystemProvider } from "@/components/DesignSystemProvider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://don-va.com"),
+  title: {
+    default: "DON VA – Virtual Assistant Services",
+    template: "%s | DON VA",
+  },
+  description:
+    "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires. Scale your team in days, not months.",
+  keywords: [
+    "virtual assistant",
+    "VA services",
+    "German speaking VA",
+    "remote assistant",
+    "business scaling",
+    "DON VA",
+  ],
+  authors: [{ name: "DON VA", url: "https://don-va.com" }],
+  creator: "DON VA",
+  publisher: "DON VA",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "DON VA",
+    title: "DON VA – Virtual Assistant Services",
+    description:
+      "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+    url: "https://don-va.com",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON VA" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DON VA – Virtual Assistant Services",
+    description:
+      "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+    images: ["/og-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://don-va.com/en",
+    languages: {
+      en: "https://don-va.com/en",
+      de: "https://don-va.com/ge",
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "DON VA",
+  url: "https://don-va.com",
+  logo: "https://don-va.com/logo.png",
+  description:
+    "Pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    availableLanguage: ["English", "German"],
+  },
+  sameAs: [],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
+        <DesignSystemProvider defaultTheme="gold">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </DesignSystemProvider>
+      </body>
+    </html>
+  );
+}

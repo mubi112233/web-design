@@ -1,0 +1,289 @@
+/* Main CSS File for Don VA Next.js Application */
+
+/* CSS Custom Properties for Theme */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+  --gold: 45 75% 52%;
+  --gold-dark: 45 75% 42%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+/* Base Styles */
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold-dark));
+}
+
+/* Gold Shadow Utilities */
+.shadow-gold {
+  box-shadow: 0 4px 20px -4px hsl(var(--gold) / 0.3);
+}
+
+.shadow-gold-lg {
+  box-shadow: 0 10px 40px -8px hsl(var(--gold) / 0.4);
+}
+
+.shadow-gold-xl {
+  box-shadow: 0 20px 60px -12px hsl(var(--gold) / 0.5);
+}
+
+/* Gold Background Utilities */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+}
+
+.bg-gold-gradient-subtle {
+  background: linear-gradient(135deg, hsl(var(--gold) / 0.1), hsl(var(--gold) / 0.05));
+}
+
+/* Text Gradient Utilities */
+.text-gold-gradient {
+  background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--gold)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation Utilities */
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(var(--gold) / 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px hsl(var(--gold) / 0);
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glassmorphism Effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px -8px hsl(var(--gold) / 0.3);
+}
+
+/* Button Enhancements */
+.btn-gold {
+  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+  color: #000;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold-outline {
+  background: transparent;
+  color: hsl(var(--gold));
+  border: 2px solid hsl(var(--gold));
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-gold-outline:hover {
+  background: hsl(var(--gold));
+  color: #000;
+  box-shadow: 0 4px 20px -4px hsl(var(--gold) / 0.3);
+}
+
+/* Navbar Specific Styles */
+.navbar-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-item-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-item-hover:hover::after {
+  width: 80%;
+}
+
+/* Mobile Menu Enhancements */
+.mobile-menu-backdrop {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Loading States */
+.loading-shimmer {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted) / 0.5) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Focus States */
+.focus-gold:focus {
+  outline: 2px solid hsl(var(--gold));
+  outline-offset: 2px;
+}
+
+/* Selection Styles */
+::selection {
+  background: hsl(var(--gold) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .text-responsive {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
