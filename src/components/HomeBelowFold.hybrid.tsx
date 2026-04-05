@@ -3,10 +3,10 @@ import { Testimonials } from "@/components/Testimonials.server";
 import { HowItWorks } from "@/components/HowItWorks.server";
 import { Pricing } from "@/components/Pricing.server";
 import { ToolsIntegration } from "@/components/ToolsIntegration.server";
-import { CaseStudies } from "@/components/CaseStudies";
+import { CaseStudies } from "@/components/CaseStudies.server";
 import { Blog } from "@/components/Blog.server";
-import { FAQ } from "@/components/FAQ";
-import { FinalCTA } from "@/components/FinalCTA";
+import { FAQ } from "@/components/FAQ.server";
+import { FinalCTA } from "@/components/FinalCTA.server";
 import { SPACING } from "@/lib/constants";
 
 export function HomeBelowFold({ lang }: { lang: string }) {
@@ -19,10 +19,10 @@ export function HomeBelowFold({ lang }: { lang: string }) {
         <ToolsIntegration lang={lang} />
         <Testimonials lang={lang} />
         <Blog lang={lang} />
-        <CaseStudies />
-        <FAQ />
+        <CaseStudies lang={lang} />
+        <FAQ lang={lang} />
       </div>
-      <FinalCTA />
+      <FinalCTA lang={lang} />
     </>
   );
 }

@@ -4,7 +4,37 @@
  */
 
 import { fetchAPI, API_ENDPOINTS, normalizeLanguage } from './api';
-import { Service } from './api';
+import type { Service, FAQItem } from './api';
+
+export interface CaseStudyCard {
+  id: number;
+  title: string;
+  company: string;
+  industry: string;
+  challenge: string;
+  image: string;
+  stats: { costSaved: string; timeframe: string; vaCount: string };
+}
+
+export interface FinalCtaSectionPayload {
+  badge?: string;
+  headlineLine1?: string;
+  headlineLine2?: string;
+  subheading?: string;
+  benefits?: string[];
+  stats?: { activeClients: string; avgRoi: string; satisfaction: string; fastStart: string };
+  trust?: {
+    consultationTime: string;
+    consultationLabel: string;
+    responseTime: string;
+    responseLabel: string;
+    noCommitment: string;
+    noCommitmentLabel: string;
+    footer: string;
+  };
+  ctas?: { primaryLabel: string; primaryHref: string; secondaryLabel: string; secondaryHref: string };
+  whatsAppNumber?: string;
+}
 
 // Types for our data structures
 export interface HomePageData {
@@ -115,5 +145,57 @@ export async function fetchTestimonialsData(lang: string): Promise<Testimonial[]
   } catch (error) {
     console.error('Error fetching testimonials:', error);
     return [];
+  }
+}
+
+export async function fetchFAQData(lang: string): Promise<FAQItem[]> {
+  try {
+    const normalizedLang = normalizeLanguage(lang);
+    const response = await fetchAPI(`${API_ENDPOINTS.FAQ}?lang=${normalizedLang}`);
+    const data = await response.json();
+    const list = Array.isArray(data?.faqs) ? (data.faqs as FAQItem[]) : [];
+    return [...list].sort((a, b) => a.order - b.order);
+  } catch (error) {
+    console.error('Error fetching FAQs:', error);
+    return [];
+  }
+}
+
+export async function fetchCaseStudiesCardsData(lang: string): Promise<CaseStudyCard[]> {
+  try {
+    const normalizedLang = normalizeLanguage(lang);
+    const response = await fetchAPI(`${API_ENDPOINTS.CASE_STUDIES}?lang=${normalizedLang}`);
+    const data = await response.json();
+    if (!Array.isArray(data?.caseStudies)) return [];
+    return data.caseStudies
+      .map((cs: Record<string, unknown>) => ({
+        id: cs.caseStudyId as number,
+        title: cs.title as string,
+        company: cs.company as string,
+        industry: cs.industry as string,
+        challenge: cs.challenge as string,
+        image: cs.image as string,
+        stats: cs.stats as CaseStudyCard['stats'],
+      }))
+      .sort((a: CaseStudyCard, b: CaseStudyCard) => a.id - b.id);
+  } catch (error) {
+    console.error('Error fetching case studies:', error);
+    return [];
+  }
+}
+
+export async function fetchFinalCtaSectionData(
+  lang: string
+): Promise<FinalCtaSectionPayload | null> {
+  try {
+    const normalizedLang = normalizeLanguage(lang);
+    const response = await fetchAPI(`${API_ENDPOINTS.FINAL_CTA}?lang=${normalizedLang}`);
+    if (!response.ok) return null;
+    const data = await response.json();
+    const section = data?.finalCta;
+    return section && typeof section === 'object' ? (section as FinalCtaSectionPayload) : null;
+  } catch (error) {
+    console.warn('Error fetching final CTA:', error);
+    return null;
   }
 }
