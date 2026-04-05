@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Calendar, Sparkles, Users, Award, Loader2, TrendingUp } from "lucide-react";
+import { ArrowRight, Calendar, Sparkles, Users, Award, Loader2, TrendingUp, Star } from "lucide-react";
 import { fetchHero, HeroData } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -322,10 +322,10 @@ export const Hero = () => {
               <Image
                 src={heroImage}
                 alt={isGe ? "Virtueller Assistent am Arbeiten" : "Virtual Assistant Working"}
-                fill
+                width={1200}
+                height={900}
                 className="w-full h-full object-cover"
                 priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
               />
               
               {/* Floating stats overlay - positioned outside image area */}
