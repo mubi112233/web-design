@@ -1,15 +1,16 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site-url";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/en", "/ge", "/blog", "/case-study", "/book-meeting", "/contact"],
+        allow: "/",
         disallow: ["/api/", "/admin/", "/_next/", "/static/"],
       },
     ],
-    sitemap: "https://don-seo.com/sitemap.xml",
-    host: "https://don-seo.com",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

@@ -1,3 +1,5 @@
+import { SITE_URL, absoluteUrl } from "@/lib/site-url";
+
 interface BlogStructuredDataProps {
   title: string;
   description: string;
@@ -23,14 +25,14 @@ export function generateBlogStructuredData({
     "author": {
       "@type": "Organization",
       "name": "DON VA",
-      "url": "https://don-seo.com"
+      "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
       "name": "DON VA",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://don-seo.com/logo.png"
+        "url": absoluteUrl("/og-image.jpg")
       }
     },
     "datePublished": publishedAt,
@@ -67,7 +69,7 @@ export function generateServiceStructuredData({
     "provider": {
       "@type": "Organization",
       "name": provider,
-      "url": "https://don-seo.com"
+      "url": SITE_URL
     },
     "areaServed": areaServed,
     "hasOfferCatalog": hasOfferCatalog,
@@ -144,7 +146,7 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      "item": `https://don-seo.com${item.href}`,
+      "item": `${SITE_URL}${item.href.startsWith("/") ? item.href : `/${item.href}`}`,
     })),
   };
 }

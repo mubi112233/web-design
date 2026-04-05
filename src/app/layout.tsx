@@ -1,19 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import "@/styles/main.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { DesignSystemProvider } from "@/components/DesignSystemProvider";
+import { SITE_URL, absoluteUrl } from "@/lib/site-url";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-inter",
 });
 
 const poppins = Poppins({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "600", "700"],
   display: "swap",
   variable: "--font-poppins",
@@ -29,7 +31,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://don-seo.com"),
+  metadataBase: new URL(SITE_URL),
   verification: {
     google: "l93HxOLqUBDjtuNfHM7OsWQd7i9MfSJo1fV_yaLAZrE",
   },
@@ -46,14 +48,27 @@ export const metadata: Metadata = {
     "remote assistant",
     "business scaling",
     "DON VA",
+    "virtuelle assistenz",
+    "deutschsprachiger VA",
   ],
-  authors: [{ name: "DON VA", url: "https://don-seo.com" }],
+  authors: [{ name: "DON VA", url: SITE_URL }],
   creator: "DON VA",
   publisher: "DON VA",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
     type: "website",
@@ -61,52 +76,69 @@ export const metadata: Metadata = {
     title: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
     description:
       "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
-    url: "https://don-seo.com",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "SEO Pro" }],
+    url: absoluteUrl("/en"),
+    locale: "en_US",
+    alternateLocale: ["de_DE"],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON VA — Virtual assistant services" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "DON VA - Premium Virtual Assistants | Save 70% on Operations",
     description:
       "Hire pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
-    images: ["/og-image.jpg"],
+    images: [absoluteUrl("/og-image.jpg")],
   },
   alternates: {
-    canonical: "https://don-seo.com/en",
+    canonical: absoluteUrl("/en"),
     languages: {
-      en: "https://don-seo.com/en",
-      de: "https://don-seo.com/ge",
+      en: absoluteUrl("/en"),
+      de: absoluteUrl("/ge"),
+      "x-default": absoluteUrl("/en"),
     },
   },
 };
 
-const jsonLd = {
+const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "DON VA",
-  url: "https://don-seo.com",
-  logo: "https://don-seo.com/favicon.ico",
+  url: SITE_URL,
+  logo: absoluteUrl("/favicon.ico"),
   description:
-    "Pre-vetted, German-speaking virtual assistants for 80% less than local hires.",
+    "Pre-vetted, German-speaking virtual assistants for growing businesses in the DACH region and worldwide.",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
     availableLanguage: ["English", "German"],
   },
-  sameAs: [
-    "https://linkedin.com/company/don-va",
-    "https://twitter.com/don_va",
+  areaServed: [
+    { "@type": "Country", name: "Germany" },
+    { "@type": "Country", name: "Austria" },
+    { "@type": "Country", name: "Switzerland" },
+    { "@type": "Place", name: "Worldwide" },
   ],
+  sameAs: ["https://linkedin.com/company/don-va", "https://twitter.com/don_va"],
 };
 
-export default function RootLayout({
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "DON VA",
+  url: SITE_URL,
+  inLanguage: ["en-US", "de-DE"],
+  publisher: { "@type": "Organization", name: "DON VA" },
+};
+
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const headersList = await headers();
+  const htmlLang = headersList.get("x-html-lang") || "en";
+
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
+    <html lang={htmlLang} suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNDGNQ7Z74"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNDGNQ7Z74" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -119,7 +151,11 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body className={`${inter.className} antialiased`} suppressHydrationWarning>

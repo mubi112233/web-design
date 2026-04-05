@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { fetchBlog, fetchCaseStudies, normalizeLanguage } from "@/lib/api";
+import { SITE_URL } from "@/lib/site-url";
 
-const base = "https://don-seo.com";
+const base = SITE_URL;
 
 const slugify = (title: string) =>
   title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim();
@@ -10,8 +11,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${base}/en`, lastModified: now, changeFrequency: "weekly", priority: 1.0, alternates: { languages: { en: `${base}/en`, de: `${base}/ge` } } },
-    { url: `${base}/ge`, lastModified: now, changeFrequency: "weekly", priority: 1.0, alternates: { languages: { en: `${base}/en`, de: `${base}/ge` } } },
+    { url: `${base}/en`, lastModified: now, changeFrequency: "weekly", priority: 1.0, alternates: { languages: { en: `${base}/en`, de: `${base}/ge`, "x-default": `${base}/en` } } },
+    { url: `${base}/ge`, lastModified: now, changeFrequency: "weekly", priority: 1.0, alternates: { languages: { en: `${base}/en`, de: `${base}/ge`, "x-default": `${base}/en` } } },
+    { url: `${base}/en/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.85, alternates: { languages: { en: `${base}/en/blog`, de: `${base}/ge/blog`, "x-default": `${base}/en/blog` } } },
+    { url: `${base}/ge/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.85, alternates: { languages: { en: `${base}/en/blog`, de: `${base}/ge/blog`, "x-default": `${base}/en/blog` } } },
     { url: `${base}/en/book-meeting`, lastModified: now, changeFrequency: "monthly", priority: 0.8, alternates: { languages: { en: `${base}/en/book-meeting`, de: `${base}/ge/book-meeting` } } },
     { url: `${base}/ge/book-meeting`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/en/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.7, alternates: { languages: { en: `${base}/en/contact`, de: `${base}/ge/contact` } } },

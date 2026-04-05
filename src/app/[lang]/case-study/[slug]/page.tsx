@@ -6,6 +6,7 @@ import { fetchCaseStudiesServer } from "@/lib/api";
 import { getCopy } from "@/lib/copy";
 import { SPACING } from "@/lib/constants";
 import type { Metadata } from "next";
+import { absoluteUrl, hreflangAlternates, localePathSegment } from "@/lib/site-url";
 
 interface CaseStudyData {
   caseStudyId: number;
@@ -31,6 +32,7 @@ export async function generateMetadata({
   const lang = resolvedParams.lang;
   const slug = resolvedParams.slug;
   const currentLang = lang === "de" || lang === "ge" ? "ge" : "en";
+  const urlSeg = localePathSegment(lang);
 
   const caseId = slug.split("-").pop();
   const caseStudyId = Number(caseId);
@@ -45,12 +47,14 @@ export async function generateMetadata({
 
   const title = `${caseStudy.company} - ${caseStudy.title} | DON VA`;
   const description = caseStudy.challenge.substring(0, 160);
-  const canonical = `https://don-va.com/${lang}/case-study/${slug}`;
+  const pathAfterLocale = `case-study/${slug}`;
+  const canonical = absoluteUrl(`/${urlSeg}/${pathAfterLocale}`);
+  const { languages } = hreflangAlternates(pathAfterLocale);
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: { canonical, languages },
     openGraph: {
       title,
       description,

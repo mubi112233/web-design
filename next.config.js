@@ -45,8 +45,8 @@ const nextConfig = {
   compress: true,
   async redirects() {
     return [
-      { source: '/de', destination: '/ge', permanent: false },
-      { source: '/de/:path*', destination: '/ge/:path*', permanent: false },
+      { source: '/de', destination: '/ge', permanent: true },
+      { source: '/de/:path*', destination: '/ge/:path*', permanent: true },
     ];
   },
   // Add ISR configuration for better content freshness

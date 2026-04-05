@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { fetchApiData, API_ENDPOINTS, normalizeLanguage } from "@/lib/api";
 import BlogPostClient from "./BlogPostClient";
 import { generateBlogStructuredData } from "@/lib/structured-data";
+import { absoluteUrl, hreflangAlternates, localePathSegment } from "@/lib/site-url";
 
 interface BlogPost {
   blogId: number;
@@ -40,17 +41,23 @@ export async function generateMetadata({
 
   const title = `${post.title} | DON VA`;
   const description = post.excerpt?.substring(0, 160) || "";
-  const canonical = `https://don-seo.com/${lang}/blog/${slug}`;
+  const seg = localePathSegment(lang);
+  const pathAfterLocale = `blog/${slug}`;
+  const canonical = absoluteUrl(`/${seg}/${pathAfterLocale}`);
+  const { languages } = hreflangAlternates(pathAfterLocale);
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: { canonical, languages },
     openGraph: {
       title,
       description,
       url: canonical,
       type: "article",
+      locale: seg === "ge" ? "de_DE" : "en_US",
+      alternateLocale: seg === "ge" ? "en_US" : "de_DE",
+      siteName: "DON VA",
       images: post.image ? [{ url: post.image, width: 1200, height: 630, alt: post.title }] : [],
     },
     twitter: {
@@ -79,7 +86,7 @@ export default async function BlogPostPage({
     publishedAt: post.date,
     updatedAt: post.date,
     image: post.image,
-    url: `https://don-seo.com/${lang}/blog/${slug}`,
+    url: absoluteUrl(`/${localePathSegment(lang)}/blog/${slug}`),
   });
 
   return (
