@@ -93,7 +93,10 @@ const jsonLd = {
     contactType: "customer service",
     availableLanguage: ["English", "German"],
   },
-  sameAs: [],
+  sameAs: [
+    "https://linkedin.com/company/don-va",
+    "https://twitter.com/don_va",
+  ],
 };
 
 export default function RootLayout({

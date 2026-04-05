@@ -40,7 +40,7 @@ export async function generateMetadata({
 
   const title = `${post.title} | DON VA`;
   const description = post.excerpt?.substring(0, 160) || "";
-  const canonical = `https://don-va.com/${lang}/blog/${slug}`;
+  const canonical = `https://don-seo.com/${lang}/blog/${slug}`;
 
   return {
     title,

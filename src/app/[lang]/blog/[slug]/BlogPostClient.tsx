@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getCopy } from "@/lib/copy";
 import { SPACING } from "@/lib/constants";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 interface BlogPost {
   blogId: number;
@@ -64,17 +65,13 @@ export default function BlogPostClient({
         className="max-w-4xl mx-auto py-6 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8"
       >
         {/* Breadcrumb */}
-        <nav className="mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground overflow-x-auto whitespace-nowrap">
-          <button onClick={() => router.push(`/${lang}`)} className="hover:text-foreground transition-colors">
-            {isGe ? "Startseite" : "Home"}
-          </button>
-          <span className="mx-2">/</span>
-          <button onClick={() => router.push(`/${lang}/blog`)} className="hover:text-foreground transition-colors">
-            Blog
-          </button>
-          <span className="mx-2">/</span>
-          <span className="text-foreground truncate inline-block max-w-[150px] sm:max-w-none align-bottom">{post.title}</span>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: isGe ? "Startseite" : "Home", href: `/${lang}` },
+            { label: "Blog", href: `/${lang}/blog` },
+            { label: post.title, href: `/${lang}/blog/${post.title}` },
+          ]}
+        />
 
         {/* Back button */}
         <motion.button
