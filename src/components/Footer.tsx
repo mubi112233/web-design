@@ -21,10 +21,10 @@ export const Footer: React.FC = () => {
         { label: "Contact Us", href: "/en/contact" },
       ],
       serviceLinks: [
-        { label: "Technical SEO", href: "/en/#services" },
-        { label: "Content Strategy", href: "/en/#services" },
-        { label: "Link Building", href: "/en/#services" },
-        { label: "SEO Audits", href: "/en/#services" },
+        { label: "Virtual Assistants", href: "/en/#services" },
+        { label: "Recruitment Services", href: "/en/#services" },
+        { label: "Team Scaling", href: "/en/#services" },
+        { label: "Quality Control", href: "/en/#services" },
         { label: "Pricing Plans", href: "/en/#pricing" },
       ],
       resourceLinks: [
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
         { label: "FAQ", href: "/en/#faq" },
         { label: "Testimonials", href: "/en/#testimonials" },
       ],
-      tagline: "Professional SEO services to grow your organic traffic and improve search rankings.",
+      tagline: "Professional virtual assistant staffing to scale your team and reduce operational costs.",
       rights: "All rights reserved.",
     },
     ge: {
@@ -47,20 +47,20 @@ export const Footer: React.FC = () => {
         { label: "Kontakt", href: "/de/contact" },
       ],
       serviceLinks: [
-        { label: "Technisches SEO", href: "/de/#services" },
-        { label: "Content-Strategie", href: "/de/#services" },
-        { label: "Link-Building", href: "/de/#services" },
-        { label: "SEO Audits", href: "/de/#services" },
+        { label: "Virtuelle Assistenten", href: "/de/#services" },
+        { label: "Recruitment-Services", href: "/de/#services" },
+        { label: "Team-Skalierung", href: "/de/#services" },
+        { label: "Qualitätskontrolle", href: "/de/#services" },
         { label: "Preispläne", href: "/de/#pricing" },
       ],
       resourceLinks: [
         { label: "Blog", href: "/de/blog" },
         { label: "Fallstudien", href: "/de/#case-studies" },
         { label: "So funktioniert es", href: "/de/#how-it-works" },
-        { label: "FAQ", href: "/de/#faq" },
-        { label: "Testimonials", href: "/de/#testimonials" },
+        { label: "Häufige Fragen", href: "/de/#faq" },
+        { label: "Kundenstimmen", href: "/de/#testimonials" },
       ],
-      tagline: "Professionelle SEO-Dienste zur Steigerung Ihres organischen Traffics und besserer Rankings.",
+      tagline: "Professionelle virtuelle Assistenten zur Skalierung Ihres Teams und Reduzierung der Betriebskosten.",
       rights: "Alle Rechte vorbehalten.",
     },
   };
@@ -68,22 +68,22 @@ export const Footer: React.FC = () => {
   const c = links[lang];
 
   return (
-    <footer className="w-full bg-card border-t border-border/50 mt-8">
+    <footer className="w-full bg-muted/50 border-t border-border mt-8">
       <div className={`container mx-auto ${SPACING.container} py-12 sm:py-16`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 group">
-              <div className="w-9 h-9 bg-gold rounded-lg flex items-center justify-center">
-                <span className="text-black font-black text-lg">{siteConfig.brandMarkText}</span>
+              <div className="w-9 h-9 bg-blue-500 rounded-lg flex items-center justify-center">
+                <span className="text-primary-foreground font-black text-lg">{siteConfig.brandMarkText}</span>
               </div>
-              <span className="text-xl font-bold text-foreground group-hover:text-gold transition-colors">{siteConfig.brandName}</span>
+              <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{siteConfig.brandName}</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.tagline}</p>
             <Link
               href={localizedPath(lang, siteConfig.routes.bookMeeting)}
-              className="inline-block px-5 py-2.5 bg-gold text-black text-sm font-bold rounded-lg hover:bg-primary transition-colors"
+              className="inline-block px-5 py-2.5 bg-primary text-primary-foreground text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors"
             >
               {isGe ? "Jetzt starten" : "Get Started"}
             </Link>
@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               {c.nav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-gold transition-colors">
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               {c.serviceLinks.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-gold transition-colors">
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -123,7 +123,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               {c.resourceLinks.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-gold transition-colors">
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -133,12 +133,12 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Don SEO. {c.rights}</p>
+        <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+          <p>© {new Date().getFullYear()} DON Recruitment. {c.rights}</p>
           <div className="flex items-center gap-4">
-            <Link href={localizedPath(lang, siteConfig.routes.blog)} className="hover:text-gold transition-colors">Blog</Link>
-            <Link href={localizedPath(lang, siteConfig.routes.contact)} className="hover:text-gold transition-colors">{isGe ? "Kontakt" : "Contact"}</Link>
-            <Link href={localizedPath(lang, siteConfig.routes.bookMeeting)} className="hover:text-gold transition-colors">{isGe ? "Meeting buchen" : "Book Meeting"}</Link>
+            <Link href={localizedPath(lang, siteConfig.routes.blog)} className="hover:text-primary transition-colors">Blog</Link>
+            <Link href={localizedPath(lang, siteConfig.routes.contact)} className="hover:text-primary transition-colors">{isGe ? "Kontakt" : "Contact"}</Link>
+            <Link href={localizedPath(lang, siteConfig.routes.bookMeeting)} className="hover:text-primary transition-colors">{isGe ? "Meeting buchen" : "Book Meeting"}</Link>
           </div>
         </div>
       </div>

@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { fetchApiData, API_ENDPOINTS, normalizeLanguage } from "@/lib/api";
 import BlogPostClient from "./BlogPostClient";
-import { generateBlogStructuredData } from "@/lib/structured-data";
+import { Navbar } from "@/components/Navbar";
+import { generateBlogStructuredData, generateBreadcrumbSchema } from "@/lib/structured-data";
 import { absoluteUrl, hreflangAlternates, publicLocalePathSegment } from "@/lib/site-url";
 
 interface BlogPost {
@@ -39,7 +40,7 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  const title = `${post.title} | DON SEO`;
+  const title = `${post.title} | DON Recruitment`;
   const description = post.excerpt?.substring(0, 160) || "";
   const seg = publicLocalePathSegment(lang);
   const pathAfterLocale = `blog/${slug}`;
@@ -47,8 +48,8 @@ export async function generateMetadata({
   const { languages } = hreflangAlternates(pathAfterLocale);
 
   return {
-    title: "DON SEO Professional SEO Services",
-    provider: { "@type": "Organization", name: "DON SEO", url: "https://don.seo" },
+    title,
+    description,
     alternates: { canonical, languages },
     openGraph: {
       title,
@@ -57,7 +58,7 @@ export async function generateMetadata({
       type: "article",
       locale: seg === "de" ? "de_DE" : "en_US",
       alternateLocale: seg === "de" ? "en_US" : "de_DE",
-      siteName: "DON SEO",
+      siteName: "DON Recruitment",
       images: post.image ? [{ url: post.image, width: 1200, height: 630, alt: post.title }] : [],
     },
     twitter: {
@@ -65,10 +66,6 @@ export async function generateMetadata({
       title,
       description,
       images: post.image ? [post.image] : [],
-      publisher: {
-        "@type": "Organization",
-        name: "DON SEO",
-      },
     },
   };
 }
@@ -93,13 +90,24 @@ export default async function BlogPostPage({
     url: absoluteUrl(`/${publicLocalePathSegment(rawLang)}/blog/${slug}`),
   });
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { label: lang === 'ge' ? 'Startseite' : 'Home', href: `/${lang}` },
+    { label: "Blog", href: `/${lang}/blog` },
+    { label: post.title, href: `/${lang}/blog/${slug}` },
+  ]);
+
   return (
-    <>
+    <div className="min-h-screen bg-background">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Navbar />
       <BlogPostClient post={post} lang={lang} />
-    </>
+    </div>
   );
 }

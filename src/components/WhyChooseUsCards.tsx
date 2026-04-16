@@ -60,7 +60,7 @@ export const WhyChooseUsCards = () => {
 
   return (
     <motion.section
-      className={`relative ${SPACING.section} ${SPACING.sideMargin} bg-background`}
+      className={`relative ${SPACING.section} bg-[hsl(220_85%_20%)]`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -69,16 +69,16 @@ export const WhyChooseUsCards = () => {
       <div className={`container mx-auto ${SPACING.container}`}>
         {/* Heading */}
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-foreground"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           {isGe ? (
-            <>Warum <span className="text-gold">uns wählen</span></>
+            <>Warum <span className="text-blue-400">uns wählen</span></>
           ) : (
-            <>Why <span className="text-gold">Choose Us</span></>
+            <>Why <span className="text-blue-400">Choose Us</span></>
           )}
         </motion.h2>
 
@@ -89,7 +89,7 @@ export const WhyChooseUsCards = () => {
             return (
               <motion.div
                 key={item.title}
-                className="relative bg-card border border-border/60 rounded-2xl p-6 sm:p-7 hover:border-gold/50 hover:shadow-[0_20px_60px_-15px_hsl(45_80%_55%/0.2)] transition-all duration-500 group overflow-hidden"
+                className="relative bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-7 hover:border-blue-400/50 hover:shadow-[0_20px_60px_-15px_hsl(220_100%_50%/0.2)] transition-all duration-500 group overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -97,21 +97,21 @@ export const WhyChooseUsCards = () => {
                 whileHover={{ y: -4 }}
               >
                 {/* Hover gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
 
                 <div className="relative z-10">
                   {/* Icon box */}
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors duration-300">
-                    <Icon className="w-6 h-6 text-gold" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover:bg-blue-500/20 transition-colors duration-300">
+                    <Icon className="w-6 h-6 text-blue-400" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-foreground mb-3 leading-snug group-hover:text-gold transition-colors duration-300">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-3 leading-snug group-hover:text-blue-300 transition-colors duration-300">
                     {item.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-white/60 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

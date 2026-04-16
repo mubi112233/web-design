@@ -3,7 +3,7 @@
  * Set NEXT_PUBLIC_SITE_URL in production to match your live domain.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://don-seo.com"
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://don-recruitment.com"
 ) as string;
 
 export function absoluteUrl(path: string): string {

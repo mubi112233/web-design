@@ -59,17 +59,17 @@ export interface DesignTokens {
 // Default Design Tokens
 export const defaultDesignTokens: DesignTokens = {
   colors: {
-    primary: 'hsl(45, 80%, 55%)', // Gold
-    secondary: 'hsl(45, 70%, 45%)', // Lighter Gold
-    accent: 'hsl(45, 90%, 65%)', // Brighter Gold
+    primary: 'hsl(220, 100%, 50%)', // Blue
+    secondary: 'hsl(220, 15%, 96%)', // Lighter Blue
+    accent: 'hsl(220, 100%, 50%)', // Bright Blue
     background: 'hsl(var(--background))',
     foreground: 'hsl(var(--foreground))',
     muted: 'hsl(var(--muted-foreground))',
     border: 'hsl(var(--border))',
     card: 'hsl(var(--card))',
-    gold: 'hsl(45, 80%, 55%)',
-    goldLight: 'hsl(45, 80%, 65%)',
-    goldDark: 'hsl(45, 80%, 45%)',
+    gold: 'hsl(220, 100%, 50%)',
+    goldLight: 'hsl(220, 100%, 60%)',
+    goldDark: 'hsl(220, 100%, 40%)',
   },
   spacing: {
     xs: '0.25rem',
@@ -91,7 +91,7 @@ export const defaultDesignTokens: DesignTokens = {
     md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
     lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
     xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-    gold: '0 20px 60px -15px hsl(45 80% 55% / 0.7)',
+    gold: '0 20px 60px -15px hsl(220 100% 50% / 0.7)',
   },
   typography: {
     fontFamily: {
@@ -116,21 +116,21 @@ export const defaultDesignTokens: DesignTokens = {
 
 // Alternative Color Schemes for Different Sites
 export const colorSchemes = {
-  // Gold Theme (Current)
+  // Blue Theme (Current - matching frontend)
   gold: {
     ...defaultDesignTokens,
     colors: {
       ...defaultDesignTokens.colors,
-      primary: 'hsl(45, 80%, 55%)',
-      secondary: 'hsl(45, 70%, 45%)',
-      accent: 'hsl(45, 90%, 65%)',
-      gold: 'hsl(45, 80%, 55%)',
-      goldLight: 'hsl(45, 80%, 65%)',
-      goldDark: 'hsl(45, 80%, 45%)',
+      primary: 'hsl(220, 100%, 50%)',
+      secondary: 'hsl(220, 15%, 96%)',
+      accent: 'hsl(220, 100%, 50%)',
+      gold: 'hsl(220, 100%, 50%)',
+      goldLight: 'hsl(220, 100%, 60%)',
+      goldDark: 'hsl(220, 100%, 40%)',
     },
   },
   
-  // Blue Theme (SEO Agency - matching frontend)
+  // Blue Theme (VA Staffing - matching frontend)
   blue: {
     ...defaultDesignTokens,
     colors: {

@@ -34,15 +34,15 @@ export default function BookMeetingClient() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gold/3 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/3 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Navbar */}
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-background/98 backdrop-blur-2xl border-b-2 border-gold/20 shadow-2xl shadow-gold/5"
+            ? "bg-background/98 backdrop-blur-2xl border-b-2 border-blue-500/20 shadow-2xl shadow-blue-500/5"
             : "bg-background/90 backdrop-blur-xl border-b border-border/30"
         }`}
         initial={{ y: -100 }}
@@ -61,7 +61,7 @@ export default function BookMeetingClient() {
               whileHover={{ scale: 1.02 }}
             >
               <motion.div
-                className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-gold via-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:shadow-gold/30 transition-all duration-500"
+                className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:shadow-blue-500/30 transition-all duration-500"
                 whileHover={{ rotate: 5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
@@ -69,11 +69,11 @@ export default function BookMeetingClient() {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-foreground via-foreground to-foreground/90 bg-clip-text text-transparent group-hover:from-gold group-hover:to-yellow-600 transition-all duration-300">
-                  DON SEO
+                <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-foreground via-foreground to-foreground/90 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-blue-600 transition-all duration-300">
+                  TalentSource
                 </span>
-                <span className="text-[10px] sm:text-xs text-gold/80 font-semibold -mt-1 tracking-wide">
-                  SEO Services
+                <span className="text-[10px] sm:text-xs text-blue-400/80 font-semibold -mt-1 tracking-wide">
+                  VA Services
                 </span>
               </div>
             </motion.div>
@@ -82,7 +82,7 @@ export default function BookMeetingClient() {
               <Link href={homePath}>
                 <Button
                   variant="ghost"
-                  className="text-muted-foreground hover:text-gold hover:bg-gold/10 transition-all duration-300 font-semibold px-4 py-2 rounded-xl group"
+                  className="text-muted-foreground hover:text-blue-400 hover:bg-blue-500/10 transition-all duration-300 font-semibold px-4 py-2 rounded-xl group"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
                   Home
@@ -97,7 +97,7 @@ export default function BookMeetingClient() {
                       "noopener,noreferrer"
                     )
                   }
-                  className="bg-gradient-to-r from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black font-bold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl hover:shadow-gold/30 transition-all duration-300 border-2 border-gold/50"
+                  className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-400 text-black font-bold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 border-2 border-blue-500/50"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Book Now
@@ -109,7 +109,7 @@ export default function BookMeetingClient() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden relative w-11 h-11 rounded-xl border border-border/50 hover:border-gold/50 hover:bg-gold/5 transition-all duration-300"
+              className="md:hidden relative w-11 h-11 rounded-xl border border-border/50 hover:border-blue-400/50 hover:bg-blue-500/5 transition-all duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <AnimatePresence mode="wait">
@@ -122,7 +122,7 @@ export default function BookMeetingClient() {
                   className="flex items-center justify-center"
                 >
                   {mobileMenuOpen ? (
-                    <X className="h-5 w-5 text-gold" />
+                    <X className="h-5 w-5 text-blue-400" />
                   ) : (
                     <Menu className="h-5 w-5 text-foreground" />
                   )}
@@ -139,7 +139,7 @@ export default function BookMeetingClient() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.4, type: "spring" }}
-                className="md:hidden border-t-2 border-gold/20 bg-background/95 backdrop-blur-xl"
+                className="md:hidden border-t-2 border-blue-500/20 bg-background/95 backdrop-blur-xl"
               >
                 <div className="py-6 space-y-4">
                   <motion.div
@@ -155,7 +155,7 @@ export default function BookMeetingClient() {
                           ?.scrollIntoView({ behavior: "smooth" });
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full bg-gradient-to-r from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="w-full bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-400 text-black font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <Calendar className="w-5 h-5 mr-2" />
                       Book Your Meeting Now
@@ -170,7 +170,7 @@ export default function BookMeetingClient() {
                     <Link href={homePath} onClick={() => setMobileMenuOpen(false)} className="w-full">
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-muted-foreground hover:text-gold hover:bg-gold/5 py-3 rounded-xl transition-all duration-300 group"
+                        className="w-full justify-start text-muted-foreground hover:text-blue-400 hover:bg-blue-500/5 py-3 rounded-xl transition-all duration-300 group"
                       >
                         <ArrowLeft className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300" />
                         <span className="font-semibold">Back to Home</span>
@@ -213,8 +213,8 @@ export default function BookMeetingClient() {
                   { icon: CheckCircle2, title: "No Commitment", desc: "Free consultation with no obligations" },
                 ].map(({ icon: Icon, title, desc }) => (
                   <div key={title} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-gold" />
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-base text-foreground mb-1">{title}</h4>
@@ -226,19 +226,19 @@ export default function BookMeetingClient() {
             </div>
 
             {/* We'll Discuss */}
-            <div className="space-y-4 p-5 sm:p-6 bg-gold/5 border border-gold/20 rounded-xl">
+            <div className="space-y-4 p-5 sm:p-6 bg-blue-500/5 border border-blue-500/20 rounded-xl">
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4">We&apos;ll Discuss</h3>
               <ul className="space-y-3">
                 {[
                   "Your current operational challenges",
-                  "How SEO can improve your search visibility",
+                  "How VAs can improve your operational efficiency",
                   "Custom solutions for your business",
                   "Pricing & team structure options",
                   "Next steps to get started",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center mt-0.5">
-                      <div className="w-2 h-2 rounded-full bg-gold" />
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5">
+                      <div className="w-2 h-2 rounded-full bg-blue-500" />
                     </div>
                     <span className="text-sm text-muted-foreground leading-relaxed">{item}</span>
                   </li>
@@ -254,7 +254,7 @@ export default function BookMeetingClient() {
                 { value: "4.9/5", label: "Rating" },
               ].map(({ value, label }) => (
                 <div key={label} className="text-center p-4 bg-card border border-border rounded-lg">
-                  <div className="text-2xl font-bold text-gold">{value}</div>
+                  <div className="text-2xl font-bold text-blue-400">{value}</div>
                   <div className="text-xs text-muted-foreground mt-1">{label}</div>
                 </div>
               ))}
@@ -266,15 +266,15 @@ export default function BookMeetingClient() {
             <div className="lg:sticky lg:top-24">
               <div className="bg-card border border-border rounded-xl p-2 shadow-lg">
                 <iframe
-                  src="https://calendly.com/mmubasharshahzad40/new-meeting?embed_domain=don-seo.com&embed_type=Inline"
+                  src="https://calendly.com/mmubasharshahzad40/new-meeting?embed_domain=talentsource.com&embed_type=Inline"
                   className="rounded-lg"
                   style={{ minWidth: "100%", height: "600px", border: "none" }}
                   title="Book a meeting"
                 />
               </div>
-              <div className="mt-4 p-4 bg-gold/5 border border-gold/20 rounded-lg text-center">
+              <div className="mt-4 p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg text-center">
                 <p className="text-sm text-muted-foreground">
-                  <Shield className="w-4 h-4 inline mr-2 text-gold" />
+                  <Shield className="w-4 h-4 inline mr-2 text-blue-400" />
                   <span className="font-semibold text-foreground">100% Secure & Confidential</span>
                 </p>
               </div>
@@ -293,26 +293,26 @@ export default function BookMeetingClient() {
             <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">
               What Our Clients Say
             </h2>
-            <p className="text-muted-foreground">See why businesses trust DON SEO</p>
+            <p className="text-muted-foreground">See why businesses trust TalentSource</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 name: "Sarah Johnson",
                 role: "CEO, TechStart Inc",
-                text: "DON SEO transformed our rankings. The consultation was thorough and the implementation was seamless.",
+                text: "TalentSource transformed our operations. We scaled our team while reducing costs significantly.",
                 rating: 5,
               },
               {
                 name: "Michael Chen",
                 role: "Founder, Digital Growth",
-                text: "Best decision we made. Our organic traffic has grown significantly within weeks.",
+                text: "Best decision we made. Our team productivity has grown significantly within weeks.",
                 rating: 5,
               },
               {
                 name: "Emma Davis",
                 role: "Director, MarketPro",
-                text: "Professional, reliable, and results-driven. Couldn't ask for more from an SEO agency.",
+                text: "Professional, reliable, and results-driven. Couldn't ask for more from a staffing partner.",
                 rating: 5,
               },
             ].map((t, idx) => (
@@ -321,17 +321,17 @@ export default function BookMeetingClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + idx * 0.1 }}
-                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:border-gold/50 hover:shadow-lg transition-all duration-300"
+                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:border-blue-400/50 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-gold fill-gold" />
+                    <Star key={i} className="w-4 h-4 text-blue-400 fill-blue-400" />
                   ))}
                 </div>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center">
-                    <span className="text-gold font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-500/10 flex items-center justify-center">
+                    <span className="text-blue-400 font-bold text-sm">
                       {t.name.split(" ").map((n) => n[0]).join("")}
                     </span>
                   </div>

@@ -3,27 +3,29 @@
 /* CSS Custom Properties for Theme */
 :root.main-css-theme {
   --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --foreground: 0 0% 0%;
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 0 0% 0%;
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222.2 84% 4.9%;
-  --muted: 210 40% 96%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96%;
-  --accent-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 220 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 15% 96%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 220 13% 97%;
+  --muted-foreground: 220 10% 40%;
+  --accent: 220 100% 50%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 86%;
+  --input: 220 13% 86%;
+  --ring: 220 100% 50%;
   --radius: 0.5rem;
-  --gold: 220 100% 50%;      /* Blue for highlights */
-  --gold-dark: 220 100% 40%; /* Darker blue */
+  --blue: 220 100% 50%;
+  --blue-dark: 220 100% 40%;
+  --gold: 220 100% 50%; /* Legacy alias */
+  --gold-dark: 220 100% 40%; /* Legacy alias */
   --chart-1: 12 76% 61%;
   --chart-2: 173 58% 39%;
   --chart-3: 197 37% 24%;
@@ -32,25 +34,25 @@
 }
 
 .main-css-theme.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 84% 4.9%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+  --background: 220 85% 6%;
+  --foreground: 0 0% 98%;
+  --card: 220 85% 10%;
+  --card-foreground: 0 0% 98%;
+  --popover: 220 85% 10%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 220 100% 65%;
+  --primary-foreground: 220 85% 6%;
+  --secondary: 220 30% 18%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 220 30% 18%;
+  --muted-foreground: 220 15% 75%;
+  --accent: 220 100% 65%;
+  --accent-foreground: 220 85% 6%;
+  --destructive: 350 84% 55%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 25% 28%;
+  --input: 220 25% 28%;
+  --ring: 220 100% 65%;
 }
 
 /* Base Styles */
@@ -79,39 +81,39 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold));
+  background: hsl(var(--blue));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--gold-dark));
+  background: hsl(var(--blue-dark));
 }
 
 /* Gold Shadow Utilities */
 .shadow-gold {
-  box-shadow: 0 4px 20px -4px hsl(var(--gold) / 0.3);
+  box-shadow: 0 4px 20px -4px hsl(var(--blue) / 0.3);
 }
 
 .shadow-gold-lg {
-  box-shadow: 0 10px 40px -8px hsl(var(--gold) / 0.4);
+  box-shadow: 0 10px 40px -8px hsl(var(--blue) / 0.4);
 }
 
 .shadow-gold-xl {
-  box-shadow: 0 20px 60px -12px hsl(var(--gold) / 0.5);
+  box-shadow: 0 20px 60px -12px hsl(var(--blue) / 0.5);
 }
 
 /* Gold Background Utilities */
 .bg-gold-gradient {
-  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+  background: linear-gradient(135deg, hsl(var(--blue)), hsl(var(--blue-dark)));
 }
 
 .bg-gold-gradient-subtle {
-  background: linear-gradient(135deg, hsl(var(--gold) / 0.1), hsl(var(--gold) / 0.05));
+  background: linear-gradient(135deg, hsl(var(--blue) / 0.1), hsl(var(--blue) / 0.05));
 }
 
 /* Text Gradient Utilities */
 .text-gold-gradient {
-  background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--gold)));
+  background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--blue)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -120,10 +122,10 @@ html {
 /* Animation Utilities */
 @keyframes pulse-gold {
   0%, 100% {
-    box-shadow: 0 0 0 0 hsl(var(--gold) / 0.7);
+    box-shadow: 0 0 0 0 hsl(var(--blue) / 0.7);
   }
   50% {
-    box-shadow: 0 0 0 10px hsl(var(--gold) / 0);
+    box-shadow: 0 0 0 10px hsl(var(--blue) / 0);
   }
 }
 
@@ -164,12 +166,12 @@ html {
 
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 40px -8px hsl(var(--gold) / 0.3);
+  box-shadow: 0 10px 40px -8px hsl(var(--blue) / 0.3);
 }
 
 /* Button Enhancements */
 .btn-gold {
-  background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+  background: linear-gradient(135deg, hsl(var(--blue)), hsl(var(--blue-dark)));
   color: #000;
   font-weight: 600;
   border: none;
@@ -195,16 +197,16 @@ html {
 
 .btn-gold-outline {
   background: transparent;
-  color: hsl(var(--gold));
-  border: 2px solid hsl(var(--gold));
+  color: hsl(var(--blue));
+  border: 2px solid hsl(var(--blue));
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .btn-gold-outline:hover {
-  background: hsl(var(--gold));
+  background: hsl(var(--blue));
   color: #000;
-  box-shadow: 0 4px 20px -4px hsl(var(--gold) / 0.3);
+  box-shadow: 0 4px 20px -4px hsl(var(--blue) / 0.3);
 }
 
 /* Navbar Specific Styles */
@@ -225,7 +227,7 @@ html {
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-dark)));
+  background: linear-gradient(90deg, hsl(var(--blue)), hsl(var(--blue-dark)));
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -259,13 +261,13 @@ html {
 
 /* Focus States */
 .focus-gold:focus {
-  outline: 2px solid hsl(var(--gold));
+  outline: 2px solid hsl(var(--blue));
   outline-offset: 2px;
 }
 
 /* Selection Styles */
 ::selection {
-  background: hsl(var(--gold) / 0.3);
+  background: hsl(var(--blue) / 0.3);
   color: hsl(var(--foreground));
 }
 

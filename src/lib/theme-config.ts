@@ -38,9 +38,9 @@ export interface ColorScheme {
 
 // Define your color schemes here
 export const colorSchemes: Record<string, ColorScheme> = {
-  // Blue SEO Agency Theme (Current)
+  // Blue VA Staffing Theme (Current)
   blue: {
-    name: "Blue SEO Agency",
+    name: "Blue VA Staffing",
     colors: {
       primary: "220 100% 50%",        // Bright blue
       primaryDark: "220 100% 40%",     // Darker blue

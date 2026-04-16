@@ -15,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
+        inter: ['var(--font-inter)', 'Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,9 +52,14 @@ export default {
           foreground: "hsl(var(--hover-foreground))",
         },
         gold: {
-          DEFAULT: "hsl(var(--gold))",
-          dark: "hsl(var(--gold-dark))",
-          light: "hsl(var(--gold-light))",
+          DEFAULT: "hsl(var(--blue))",
+          dark: "hsl(var(--blue-dark))",
+          light: "hsl(var(--blue-light))",
+        },
+        blue: {
+          DEFAULT: "hsl(var(--blue))",
+          dark: "hsl(var(--blue-dark))",
+          light: "hsl(var(--blue-light))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -74,14 +79,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        chart: {
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
+        },
       },
       backgroundImage: {
-        'gradient-gold': 'var(--gradient-gold)',
+        'gradient-gold': 'var(--gradient-blue)',
+        'gradient-blue': 'var(--gradient-blue)',
         'gradient-dark': 'var(--gradient-dark)',
       },
       boxShadow: {
-        gold: "var(--shadow-gold)",
-        "gold-lg": "var(--shadow-gold-lg)",
+        gold: "var(--shadow-blue)",
+        "gold-lg": "var(--shadow-blue-lg)",
+        "gold-xl": "var(--shadow-blue-xl)",
+        blue: "var(--shadow-blue)",
+        "blue-lg": "var(--shadow-blue-lg)",
+        "blue-xl": "var(--shadow-blue-xl)",
         elegant: "var(--shadow-elegant)",
       },
       transitionTimingFunction: {
@@ -95,25 +112,37 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "pulse-gold": {
+          "0%, 100%": { boxShadow: "0 0 0 0 hsl(var(--blue) / 0.7)" },
+          "50%": { boxShadow: "0 0 0 10px hsl(var(--blue) / 0)" },
+        },
+        "pulse-blue": {
+          "0%, 100%": { boxShadow: "0 0 0 0 hsl(var(--blue) / 0.7)" },
+          "50%": { boxShadow: "0 0 0 10px hsl(var(--blue) / 0)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-gold": "pulse-blue 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "pulse-blue": "pulse-blue 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "float": "float 3s ease-in-out infinite",
+        "shimmer": "shimmer 1.5s infinite",
       },
     },
   },

@@ -21,10 +21,10 @@ const fallbackCopy = {
   en: {
     badge: "Ready to Scale?",
     headlineLine1: "Start with",
-    headlineLine2: "DON SEO Today",
+    headlineLine2: "DON Recruitment Today",
     subheading:
-      "Book a free consultation and see how we can improve your rankings in 30 days.",
-    benefits: ["No setup fees", "30-day trial", "SEO experts", "Monthly reporting"],
+      "Book a free consultation and see how we can scale your team in 7 days.",
+    benefits: ["No setup fees", "30-day trial", "Vetted VAs", "Weekly reporting"],
     stats: { activeClients: "200+", avgRoi: "340%", satisfaction: "98%", fastStart: "30d" },
     statsLabels: {
       activeClients: "Active Clients",
@@ -47,10 +47,10 @@ const fallbackCopy = {
   ge: {
     badge: "Bereit zu skalieren?",
     headlineLine1: "Starten Sie noch heute",
-    headlineLine2: "mit DON SEO",
+    headlineLine2: "mit DON Recruitment",
     subheading:
-      "Buchen Sie eine kostenlose Beratung und erleben Sie, wie wir Ihre Rankings in 30 Tagen verbessern.",
-    benefits: ["Keine Einrichtungsgebühren", "30-Tage-Test", "SEO-Experten", "Monatliches Reporting"],
+      "Buchen Sie eine kostenlose Beratung und erleben Sie, wie wir Ihr Team in 7 Tagen skalieren.",
+    benefits: ["Keine Einrichtungsgebühren", "30-Tage-Test", "Geprüfte VAs", "Wöchentliches Reporting"],
     stats: { activeClients: "200+", avgRoi: "340%", satisfaction: "98%", fastStart: "30d" },
     statsLabels: {
       activeClients: "Aktive Kunden",
@@ -123,51 +123,51 @@ export async function FinalCTA({ lang }: { lang: string }) {
   ];
 
   return (
-    <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-br from-gold via-primary to-gold">
+    <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-gradient-to-br from-primary via-primary/90 to-primary/80 dark:from-blue-500 dark:via-blue-600 dark:to-blue-700">
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-5 dark:opacity-10"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
             backgroundSize: "50px 50px",
           }}
         />
-        <div className="absolute -top-20 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 dark:bg-white/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-16 -left-16 w-60 h-60 bg-primary/20 rounded-full blur-3xl" />
       </div>
 
       <div className="w-full px-0 relative z-10">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6">
           <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="px-5 py-2.5 bg-white/25 backdrop-blur-lg rounded-full text-sm font-bold text-white flex items-center gap-2 border border-white/40 shadow-xl">
+            <div className="px-5 py-2.5 bg-background/25 dark:bg-white/25 backdrop-blur-lg rounded-full text-sm font-bold text-primary-foreground dark:text-white flex items-center gap-2 border border-border/50 dark:border-white/40 shadow-xl">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>{c.badge}</span>
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             </div>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 sm:mb-8 text-white leading-[1.1]">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 sm:mb-8 text-primary-foreground dark:text-white leading-[1.1]">
             <span className="block drop-shadow-lg">{c.headlineLine1}</span>
             <span className="relative inline-block mt-2">
-              <span className="relative z-10 bg-gradient-to-r from-white via-amber-50 to-white bg-clip-text text-transparent drop-shadow-2xl">
+              <span className="relative z-10 bg-gradient-to-r from-primary-foreground via-primary-foreground to-primary-foreground dark:from-white dark:via-white dark:to-white bg-clip-text text-transparent drop-shadow-2xl">
                 {c.headlineLine2}
               </span>
             </span>
           </h2>
 
           <div className="mb-10 sm:mb-12 max-w-4xl mx-auto">
-            <p className="text-xl sm:text-2xl text-white/95 mb-8 leading-relaxed font-semibold">
+            <p className="text-xl sm:text-2xl text-primary-foreground/95 dark:text-white/95 mb-8 leading-relaxed font-semibold">
               {c.subheading}
             </p>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               {c.benefits.map((benefit, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-full px-4 py-2 border border-white/30 hover:bg-white/25 transition-all duration-300"
+                  className="flex items-center gap-2 bg-background/15 dark:bg-white/15 backdrop-blur-md rounded-full px-4 py-2 border border-border/50 dark:border-white/30 hover:bg-background/25 dark:hover:bg-white/25 transition-all duration-300"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0" />
-                  <span className="text-white text-sm font-semibold whitespace-nowrap">{benefit}</span>
+                  <CheckCircle2 className="w-4 h-4 text-primary-foreground dark:text-white flex-shrink-0" />
+                  <span className="text-primary-foreground dark:text-white text-sm font-semibold whitespace-nowrap">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -176,7 +176,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a
               href={c.primaryHref}
-              className="inline-flex items-center justify-center gap-3 bg-white text-gold hover:bg-white/95 hover:scale-[1.08] px-8 sm:px-12 py-6 sm:py-8 text-base sm:text-lg font-extrabold rounded-2xl shadow-xl transition-all duration-300 border-2 border-white w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-3 bg-background text-foreground hover:bg-background/95 hover:scale-[1.08] px-8 sm:px-12 py-6 sm:py-8 text-base sm:text-lg font-extrabold rounded-2xl shadow-xl transition-all duration-300 border-2 border-border w-full sm:w-auto"
             >
               <span>{c.primaryCta}</span>
               <ArrowRight className="h-5 w-5" />
@@ -185,7 +185,7 @@ export async function FinalCTA({ lang }: { lang: string }) {
               href={c.secondaryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-white/10 border-2 border-white text-white hover:bg-white hover:text-gold hover:scale-[1.08] px-6 sm:px-10 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl backdrop-blur-lg transition-all duration-300 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-3 bg-background/10 dark:bg-white/10 border-2 border-border dark:border-white text-primary-foreground dark:text-white hover:bg-background hover:text-foreground dark:hover:bg-white dark:hover:text-[hsl(220_85%_20%)] hover:scale-[1.08] px-6 sm:px-10 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl backdrop-blur-lg transition-all duration-300 w-full sm:w-auto"
             >
               <MessageCircle className="h-5 w-5" />
               <span>{c.secondaryCta}</span>
@@ -196,48 +196,48 @@ export async function FinalCTA({ lang }: { lang: string }) {
             {statsItems.map((stat, i) => (
               <div
                 key={i}
-                className="bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl p-4 sm:p-6 hover:bg-white/25 transition-all duration-300 group"
+                className="bg-background/15 dark:bg-white/15 backdrop-blur-lg border border-border/50 dark:border-white/30 rounded-2xl p-4 sm:p-6 hover:bg-background/25 dark:hover:bg-white/25 transition-all duration-300 group"
               >
-                <stat.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white mb-2 mx-auto group-hover:scale-110 transition-transform duration-300" />
-                <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-xs sm:text-sm text-white/80">{stat.label}</div>
+                <stat.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground dark:text-white mb-2 mx-auto group-hover:scale-110 transition-transform duration-300" />
+                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground dark:text-white mb-1">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-primary-foreground/80 dark:text-white/80">{stat.label}</div>
               </div>
             ))}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-3 text-white/90 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <div className="p-2 bg-green-400/20 rounded-lg">
-                <Clock className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 text-primary-foreground/90 dark:text-white/90 bg-background/10 dark:bg-white/10 backdrop-blur-md rounded-xl p-4 border border-border/50 dark:border-white/20 hover:bg-background/15 dark:hover:bg-white/15 transition-all duration-300">
+              <div className="p-2 bg-green-500/20 rounded-lg">
+                <Clock className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-white text-base">{c.trust.consultationTime}</div>
-                <div className="text-sm text-white/80">{c.trust.consultationLabel}</div>
+                <div className="font-bold text-primary-foreground dark:text-white text-base">{c.trust.consultationTime}</div>
+                <div className="text-sm text-primary-foreground/80 dark:text-white/80">{c.trust.consultationLabel}</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 text-white/90 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <div className="p-2 bg-green-400/20 rounded-lg">
-                <div className="w-5 h-5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 text-primary-foreground/90 dark:text-white/90 bg-background/10 dark:bg-white/10 backdrop-blur-md rounded-xl p-4 border border-border/50 dark:border-white/20 hover:bg-background/15 dark:hover:bg-white/15 transition-all duration-300">
+              <div className="p-2 bg-green-500/20 rounded-lg">
+                <div className="w-5 h-5 rounded-full bg-green-500 dark:bg-green-400 animate-pulse flex-shrink-0" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-white text-base">{c.trust.responseTime}</div>
-                <div className="text-sm text-white/80">{c.trust.responseLabel}</div>
+                <div className="font-bold text-primary-foreground dark:text-white text-base">{c.trust.responseTime}</div>
+                <div className="text-sm text-primary-foreground/80 dark:text-white/80">{c.trust.responseLabel}</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 text-white/90 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <div className="p-2 bg-green-400/20 rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 text-primary-foreground/90 dark:text-white/90 bg-background/10 dark:bg-white/10 backdrop-blur-md rounded-xl p-4 border border-border/50 dark:border-white/20 hover:bg-background/15 dark:hover:bg-white/15 transition-all duration-300">
+              <div className="p-2 bg-green-500/20 rounded-lg">
+                <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-white text-base">{c.trust.noCommitment}</div>
-                <div className="text-sm text-white/80">{c.trust.noCommitmentLabel}</div>
+                <div className="font-bold text-primary-foreground dark:text-white text-base">{c.trust.noCommitment}</div>
+                <div className="text-sm text-primary-foreground/80 dark:text-white/80">{c.trust.noCommitmentLabel}</div>
               </div>
             </div>
           </div>
 
-          <p className="mt-8 text-white/80 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="mt-8 text-primary-foreground/80 dark:text-white/80 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-medium">
             <span className="flex items-center justify-center gap-2 flex-wrap">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400" />
               {c.trust.footer}
             </span>
           </p>

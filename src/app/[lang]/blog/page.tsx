@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BlogListingClient } from "./BlogListingClient";
 import { absoluteUrl, hreflangAlternates, publicLocalePathSegment } from "@/lib/site-url";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 export async function generateMetadata({
   params,
@@ -14,29 +15,31 @@ export async function generateMetadata({
 
   const isDe = seg === "de";
   const title = isDe
-    ? "Blog — SEO Tipps & Suchmaschinenoptimierung | DON SEO"
-    : "Blog — SEO Tips & Search Engine Optimization | DON SEO";
+    ? "Blog — Recruiting Tipps & HR Insights | DON Recruitment"
+    : "Blog — Recruitment Tips & HR Insights | DON Recruitment";
   const description = isDe
-    ? "Einblicke, Tipps und Best Practices zu SEO, technischer Optimierung und Content-Strategie — auf Deutsch."
-    : "Insights, tips, and best practices for SEO, technical optimization, and content strategy.";
+    ? "Einblicke, Tipps und Best Practices zu Recruiting, Talent Acquisition und HR-Strategie — auf Deutsch."
+    : "Insights, tips, and best practices for recruitment, talent acquisition, and HR strategy.";
 
   return {
     title,
     description,
     keywords: isDe
       ? [
-          "SEO Blog",
-          "Suchmaschinenoptimierung Tipps",
-          "SEO deutsch",
-          "Content Strategie",
-          "DON SEO",
+          "Recruiting Blog",
+          "Personalvermittlung Tipps",
+          "HR deutsch",
+          "Talent Acquisition",
+          "DON Recruitment",
+          "Executive Search Blog",
         ]
       : [
-          "SEO blog",
-          "search engine optimization tips",
-          "technical SEO",
-          "content strategy",
-          "DON SEO",
+          "recruitment blog",
+          "talent acquisition tips",
+          "hiring strategies",
+          "HR best practices",
+          "DON Recruitment",
+          "executive search insights",
         ],
     alternates: {
       canonical,
@@ -49,8 +52,8 @@ export async function generateMetadata({
       type: "website",
       locale: isDe ? "de_DE" : "en_US",
       alternateLocale: isDe ? "en_US" : "de_DE",
-      siteName: "DON SEO",
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON SEO" }],
+      siteName: "DON Recruitment",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON Recruitment" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -62,6 +65,21 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPage() {
-  return <BlogListingClient />;
+export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: raw } = await params;
+  const lang = raw === 'de' || raw === 'ge' ? 'ge' : 'en';
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { label: lang === 'ge' ? 'Startseite' : 'Home', href: `/${lang}` },
+    { label: "Blog", href: `/${lang}/blog` },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <BlogListingClient />
+    </>
+  );
 }

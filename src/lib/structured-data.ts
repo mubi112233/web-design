@@ -24,12 +24,12 @@ export function generateBlogStructuredData({
     "description": description,
     "author": {
       "@type": "Organization",
-      "name": "DON SEO",
+      "name": "DON Recruitment",
       "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
-      "name": "DON SEO",
+      "name": "DON Recruitment",
       "logo": {
         "@type": "ImageObject",
         "url": absoluteUrl("/og-image.jpg")
@@ -73,8 +73,8 @@ export function generateServiceStructuredData({
     },
     "areaServed": areaServed,
     "hasOfferCatalog": hasOfferCatalog,
-    "serviceType": "SEO Services"
-  };
+    "serviceType": "VA Staffing Services"
+  }; 
 }
 
 interface LocalBusinessStructuredDataProps {

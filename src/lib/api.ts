@@ -7,12 +7,15 @@
 
 // API Configuration
 const getApiBase = () =>
-  process.env.NEXT_PUBLIC_API_BASE ||
-  'https://api.don-seo.com';
+  process.env.NEXT_PUBLIC_API_BASE || "https://api.don-va.com";
 
-const getTenantId = () =>
-  process.env.NEXT_PUBLIC_TENANT_ID ||
-  'socal_media_agency';
+const getTenantId = () => {
+  const tenantId = process.env.NEXT_PUBLIC_TENANT_ID || 'recrtment';
+  if (typeof window !== 'undefined') {
+    console.log('[API] Using Tenant ID:', tenantId);
+  }
+  return tenantId;
+};
 
 /**
  * Creates fetch options with proper headers including X-Tenant-ID
@@ -46,6 +49,19 @@ export async function fetchAPI(
 ): Promise<Response> {
   const url = endpoint.startsWith('http') ? endpoint : `${getApiBase()}${endpoint}`;
   const fetchOptions = createFetchOptions(options);
+  const tenantId = getTenantId();
+  
+  // Log actual headers being sent
+  const headersObj: Record<string, string> = {};
+  if (fetchOptions.headers instanceof Headers) {
+    fetchOptions.headers.forEach((value: string, key: string) => {
+      headersObj[key] = value;
+    });
+  }
+  
+  console.log('[API Server] Fetching:', url);
+  console.log('[API Server] Headers:', headersObj);
+  console.log('[API Server] Tenant ID from env:', process.env.NEXT_PUBLIC_TENANT_ID);
 
   return fetch(url, fetchOptions);
 }
@@ -60,6 +76,19 @@ export async function fetchAPIClient(
 ): Promise<Response> {
   const url = endpoint.startsWith('http') ? endpoint : `${getApiBase()}${endpoint}`;
   const fetchOptions = createFetchOptions(options);
+  const tenantId = getTenantId();
+  
+  // Log actual headers being sent
+  const headersObj: Record<string, string> = {};
+  if (fetchOptions.headers instanceof Headers) {
+    fetchOptions.headers.forEach((value, key) => {
+      headersObj[key] = value;
+    });
+  }
+  
+  console.log('[API Client] Fetching:', url);
+  console.log('[API Client] Headers:', headersObj);
+  console.log('[API Client] Tenant ID from env:', process.env.NEXT_PUBLIC_TENANT_ID);
 
   return fetch(url, fetchOptions);
 }
@@ -98,6 +127,8 @@ export async function fetchApiData<T>(
 ): Promise<T | null> {
   try {
     const url = buildApiUrl(endpoint, lang);
+    const tenantId = getTenantId();
+    console.log(`[fetchApiData] Endpoint: ${endpoint} | Lang: ${lang} | Tenant: ${tenantId}`);
     const response = await fetchAPI(url, options);
     
     if (!response.ok) {
@@ -106,6 +137,7 @@ export async function fetchApiData<T>(
     }
 
     const data = await response.json();
+    console.log(`[fetchApiData] Response for ${endpoint}:`, data);
     return data;
   } catch (error) {
     console.warn('Failed to fetch API data:', error);
@@ -123,6 +155,8 @@ export async function fetchApiDataClient<T>(
 ): Promise<T | null> {
   try {
     const url = buildApiUrl(endpoint, lang);
+    const tenantId = getTenantId();
+    console.log(`[fetchApiDataClient] Endpoint: ${endpoint} | Lang: ${lang} | Tenant: ${tenantId}`);
     const response = await fetchAPIClient(url, options);
     
     if (!response.ok) {
@@ -131,6 +165,7 @@ export async function fetchApiDataClient<T>(
     }
 
     const data = await response.json();
+    console.log(`[fetchApiDataClient] Response for ${endpoint}:`, data);
     return data;
   } catch (error) {
     console.warn('Failed to fetch API data:', error);
@@ -147,6 +182,7 @@ export const normalizeLanguage = (lang: string): string => {
 
 // Hero API
 export interface HeroData {
+  _id?: string;
   title: string;
   subtitle: string;
   tagline: string;
@@ -160,9 +196,26 @@ export interface HeroData {
   };
 }
 
-export const fetchHero = (lang: string = 'en') => 
-  fetchApiDataClient<{ hero: HeroData }>(API_ENDPOINTS.HERO, normalizeLanguage(lang))
-    .then(data => data?.hero || null);
+export const fetchHero = (lang: string = 'en') =>
+  fetchApiDataClient<{ hero: HeroData | HeroData[] }>(API_ENDPOINTS.HERO, normalizeLanguage(lang))
+    .then(data => {
+      if (!data?.hero) return null;
+
+      // Handle array response (multiple heroes)
+      if (Array.isArray(data.hero)) {
+        // Sort by _id (newest first - MongoDB ObjectId contains timestamp)
+        const sorted = data.hero.sort((a, b) => {
+          const idA = a._id || '';
+          const idB = b._id || '';
+          return idB.localeCompare(idA); // Descending order (newest first)
+        });
+        console.log(`[fetchHero] Found ${sorted.length} heroes, using newest:`, sorted[0]?._id);
+        return sorted[0] || null;
+      }
+
+      // Single hero object
+      return data.hero;
+    });
 
 // Services API
 export interface Service {

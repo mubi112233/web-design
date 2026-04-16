@@ -10,27 +10,27 @@ export const copy = {
     howItWorks: {
       badge: "How It Works",
       heading: "Get started in <span class=\"text-gold\">4 simple steps</span>",
-      description: "From audit to measurable rankings — our process is designed to deliver SEO results fast.",
+      description: "From consultation to deployment — our process is designed to deliver top talent fast.",
       steps: {
         step1: {
           step: "Step 1",
           title: "Initial Consultation",
-          description: "We analyze your website and competitors to create a customized SEO strategy."
+          description: "We discuss your needs, workflow, and requirements to understand your ideal VA profile."
         },
         step2: {
-          step: "Step 2", 
-          title: "SEO Strategy & Planning",
-          description: "We develop a tailored SEO roadmap with technical fixes, content, and link building."
+          step: "Step 2",
+          title: "Talent Sourcing & Vetting",
+          description: "We source, screen, and test candidates to find the perfect match for your needs."
         },
         step3: {
           step: "Step 3",
-          title: "Implementation & Optimization",
-          description: "We execute the SEO plan with technical improvements, content optimization, and link acquisition."
+          title: "Onboarding & Training",
+          description: "We onboard your VA with your tools, processes, and expectations for seamless integration."
         },
         step4: {
           step: "Step 4",
-          title: "Monitoring & Growth",
-          description: "Continuous tracking, reporting, and optimization to improve rankings and organic traffic."
+          title: "Management & Growth",
+          description: "Continuous management, quality control, and support to ensure long-term success."
         }
       }
     },
@@ -45,11 +45,11 @@ export const copy = {
     // Testimonials
     testimonials: {
       heading: "Trusted by <span class=\"text-gold\">Growing Businesses</span>",
-      subheading: "Real results from real companies growing with DON SEO.",
+      subheading: "Real results from real companies growing with TalentSource.",
       caseStudy: {
         badge: "Success Story",
         title: "Case Study: <span class=\"text-gold\">70% Cost Reduction</span>",
-        description: "See how a mid-sized e-commerce company increased organic traffic by 340% and reduced their cost per acquisition by 60%.",
+        description: "See how a mid-sized e-commerce company scaled their operations with 10 VAs and reduced their operational costs by 60%.",
         cta: "View Full Case Study",
       },
     },
@@ -58,7 +58,7 @@ export const copy = {
     blog: {
       badge: "Insights",
       heading: "Latest <span class=\"text-gold\">Insights</span>",
-      description: "Practical guides and strategies for improving your search rankings and organic traffic.",
+      description: "Practical guides and strategies for scaling your team and optimizing your operations.",
       by: "By",
       readMore: "Read more",
       read: "Read",
@@ -68,7 +68,7 @@ export const copy = {
     caseStudies: {
       badge: "Success Stories",
       heading: "Real <span class=\"text-gold\">Success Stories</span>",
-      description: "Proven results from companies growing their organic presence with DON SEO.",
+      description: "Proven results from companies scaling their teams with TalentSource.",
       labels: {
         saved: "Saved",
         teamSize: "Team Size",
@@ -98,8 +98,8 @@ export const copy = {
       sectionBadge: "Pricing",
       sectionTitle: "Simple, transparent pricing",
       sectionDescription: "Choose a plan that fits your needs. Scale up or down anytime.",
-      vaCountLabel: "Select your SEO plan",
-      vaCountHelper: "Choose the right SEO package for your business",
+      vaCountLabel: "How many VAs do you need?",
+      vaCountHelper: "Choose the right number of virtual assistants for your team",
       startingFrom: "Starting from €{price}/mo · ~€{hourly}/hr",
       bulkDiscount: "{percent}% bulk discount applied!",
       bulkSavings: "You save €{amount} total",
@@ -117,7 +117,7 @@ export const copy = {
           name: "Starter",
           hours: "10h / week",
           features: [
-            "Dedicated SEO Specialist",
+            "Dedicated Virtual Assistant",
             "Native Quality Control",
             "24h Replacement Guarantee",
             "Slack/Email Support",
@@ -174,27 +174,27 @@ export const copy = {
     howItWorks: {
       badge: "Wie es funktioniert",
       heading: "Starten Sie in <span class=\"text-gold\">4 einfachen Schritten</span>",
-      description: "Vom Audit bis zu messbaren Rankings – unser Prozess liefert schnelle SEO-Ergebnisse.",
+      description: "Von der Beratung bis zur Einsatzbereitschaft – unser Prozess liefert schnell Top-Talente.",
       steps: {
         step1: {
           step: "Schritt 1",
           title: "Erstberatung",
-          description: "Wir analysieren Ihre Website und Konkurrenz, um eine maßgeschneiderte SEO-Strategie zu entwickeln."
+          description: "Wir besprechen Ihre Bedürfnisse, Workflows und Anforderungen, um Ihr ideales VA-Profil zu verstehen."
         },
         step2: {
           step: "Schritt 2",
-          title: "SEO-Strategie & Planung",
-          description: "Wir entwickeln eine maßgeschneiderte SEO-Roadmap mit technischen Fixes, Content und Link-Building."
+          title: "Talent-Sourcing & Prüfung",
+          description: "Wir rekrutieren, screenen und testen Kandidaten, um die perfekte Übereinstimmung für Ihre Bedürfnisse zu finden."
         },
         step3: {
           step: "Schritt 3",
-          title: "Implementierung & Optimierung",
-          description: "Wir führen den SEO-Plan mit technischen Verbesserungen, Content-Optimierung und Link-Aufbau aus."
+          title: "Onboarding & Schulung",
+          description: "Wir integrieren Ihren VA mit Ihren Tools, Prozessen und Erwartungen für eine nahtlose Einarbeitung."
         },
         step4: {
           step: "Schritt 4",
-          title: "Monitoring & Wachstum",
-          description: "Kontinuierliches Tracking, Reporting und Optimierung zur Verbesserung der Rankings und organischen Sichtbarkeit."
+          title: "Management & Wachstum",
+          description: "Kontinuierliches Management, Qualitätskontrolle und Support für langfristigen Erfolg."
         }
       }
     },
@@ -209,11 +209,11 @@ export const copy = {
     // Testimonials
     testimonials: {
       heading: "Vertrauen von <span class=\"text-gold\">wachsenden Unternehmen</span>",
-      subheading: "Echte Ergebnisse von Unternehmen, die mit DON SEO wachsen.",
+      subheading: "Echte Ergebnisse von Unternehmen, die mit TalentSource wachsen.",
       caseStudy: {
         badge: "Erfolgsgeschichte",
         title: "Fallstudie: <span class=\"text-gold\">70% Kostensenkung</span>",
-        description: "Erfahren Sie, wie ein mittelständisches E-Commerce-Unternehmen den organischen Traffic um 340% steigerte und die Akquisitionskosten um 60% senkte.",
+        description: "Erfahren Sie, wie ein mittelständisches E-Commerce-Unternehmen mit 10 VAs skalierte und die Betriebskosten um 60% senkte.",
         cta: "Vollständige Fallstudie ansehen",
       },
     },
@@ -222,7 +222,7 @@ export const copy = {
     blog: {
       badge: "Einblicke",
       heading: "Aktuelle <span class=\"text-gold\">Einblicke</span>",
-      description: "Praktische Leitfäden und Strategien zur Verbesserung Ihrer Suchrankings und organischen Sichtbarkeit.",
+      description: "Praktische Leitfäden und Strategien zur Skalierung Ihres Teams und Optimierung Ihrer Abläufe.",
       by: "Von",
       readMore: "Weiterlesen",
       read: "Lesen",
@@ -232,7 +232,7 @@ export const copy = {
     caseStudies: {
       badge: "Erfolgsgeschichten",
       heading: "Echte <span class=\"text-gold\">Erfolgsgeschichten</span>",
-      description: "Bewährte Ergebnisse von Unternehmen, die ihre organische Präsenz mit DON SEO ausbauen.",
+      description: "Bewährte Ergebnisse von Unternehmen, die ihre Teams mit TalentSource skalieren.",
       labels: {
         saved: "Gespart",
         teamSize: "Teamgröße",
@@ -259,72 +259,72 @@ export const copy = {
 
     // Pricing
     pricing: {
-      sectionBadge: "Pricing",
-      sectionTitle: "Simple, Transparent Pricing",
-      sectionDescription: "Choose the perfect plan for your business. Scale up or down anytime.",
-      vaCountLabel: "Wählen Sie Ihr SEO-Paket",
-      vaCountHelper: "Wählen Sie das richtige SEO-Paket für Ihr Unternehmen",
-      startingFrom: "Starting from €{price}/hour",
-      bulkDiscount: "{percent}% discount - {suffix} more!",
-      bulkSavings: "Save €{amount} total",
-      bulkHint: "Add {count} more {suffix} to get {percent}% discount",
-      bannerBadge: "Limited Time",
-      bannerTitle: "Book a Meeting",
-      bannerSubtitle: "Schedule your free consultation and get started today",
+      sectionBadge: "Preise",
+      sectionTitle: "Einfache, transparente Preise",
+      sectionDescription: "Wählen Sie den perfekten Plan für Ihr Unternehmen. Skalieren Sie jederzeit hoch oder runter.",
+      vaCountLabel: "Wie viele VAs brauchen Sie?",
+      vaCountHelper: "Wählen Sie die richtige Anzahl virtueller Assistenten für Ihr Team",
+      startingFrom: "Ab €{price}/Stunde",
+      bulkDiscount: "{percent}% Rabatt - {suffix} mehr!",
+      bulkSavings: "Gesamtersparnis: €{amount}",
+      bulkHint: "Fügen Sie {count} weitere {suffix} hinzu, um {percent}% Rabatt zu erhalten",
+      bannerBadge: "Zeitlich begrenzt",
+      bannerTitle: "Meeting buchen",
+      bannerSubtitle: "Vereinbaren Sie Ihre kostenlose Beratung und starten Sie noch heute",
       bannerPoints: {
-        noCommitment: "No commitment",
-        cancelAnytime: "Cancel anytime", 
-        fullAccess: "Full access"
+        noCommitment: "Keine Verpflichtung",
+        cancelAnytime: "Jederzeit kündbar", 
+        fullAccess: "Voller Zugriff"
       },
       plans: {
         starter: {
           name: "Starter",
           hours: "10h / week",
           features: [
-            "Dedicated SEO Specialist",
-            "Native Quality Control",
-            "24h Replacement Guarantee", 
+            "Dedizierter virtueller Assistent",
+            "Qualitätskontrolle durch Muttersprachler",
+            "24h Ersatzgarantie", 
             "Slack/Email Support",
-            "14 Days Money-Back Warranty"
+            "14 Tage Geld-zurück-Garantie"
           ]
         },
         professional: {
           name: "Professional", 
-          hours: "20h / week",
+          hours: "20h / Woche",
           features: [
-            "Everything in Starter",
-            "No Setup Fee",
-            "Priority Support",
-            "Bi-weekly Progress Reports",
-            "Flexible Hour Rollover"
+            "Alles aus Starter",
+            "Keine Einrichtungsgebühr",
+            "Prioritätsupport",
+            "Zweiwöchentliche Fortschrittsberichte",
+            "Flexible Stundenübertragung"
           ]
         },
         enterprise: {
           name: "Enterprise",
-          hours: "40h / week", 
-          badge: "Best Value",
+          hours: "40h / Woche", 
+          badge: "Bester Wert",
           features: [
-            "Everything in Professional",
-            "No Setup Fee",
-            "Dedicated Account Manager", 
-            "Weekly Strategy Calls",
-            "Custom Workflow Integration"
+            "Alles aus Professional",
+            "Keine Einrichtungsgebühr",
+            "Dedizierter Account Manager", 
+            "Wöchentliche Strategie-Calls",
+            "Individuelle Workflow-Integration"
           ]
         }
       },
-      button: "Get Started",
-      perMonth: "/mo",
-      hoursUnit: "hours",
-      planSetupFee: "+€{fee} setup fee",
-      planNoSetupFee: "No setup fee",
-      disclaimer: "All prices are per plan. Bulk discounts apply automatically. Setup fees are one-time charges."
+      button: "Jetzt starten",
+      perMonth: "/Mo.",
+      hoursUnit: "Stunden",
+      planSetupFee: "+€{fee} Einrichtungsgebühr",
+      planNoSetupFee: "Keine Einrichtungsgebühr",
+      disclaimer: "Alle Preise gelten pro Plan. Mengenrabatte werden automatisch angewendet. Einrichtungsgebühren sind einmalige Zahlungen."
     },
 
     // Final CTA
     finalCTA: {
       badge: "Bereit zu skalieren?",
-      title: "Starten Sie noch heute mit <span class=\"text-gold\">DON SEO</span>",
-      description: "Buchen Sie eine kostenlose Beratung und erleben Sie, wie wir Ihre Rankings in 30 Tagen verbessern können."
+      title: "Starten Sie noch heute mit <span class=\"text-gold\">TalentSource</span>",
+      description: "Buchen Sie eine kostenlose Beratung und erleben Sie, wie wir Ihr Team in 30 Tagen aufstocken können."
     },
 
     // Value Proposition (if used)

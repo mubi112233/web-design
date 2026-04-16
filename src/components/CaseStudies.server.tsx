@@ -23,7 +23,7 @@ export async function CaseStudies({ lang }: { lang: string }) {
     return (
       <section
         id="case-studies"
-        className="relative py-8 sm:py-10 md:py-12 lg:py-14 bg-background"
+        className="relative py-8 sm:py-10 md:py-12 lg:py-14 bg-muted/30"
       >
         <div className={`container mx-auto ${SPACING.container}`}>
           <div className="text-center py-20">
@@ -41,14 +41,14 @@ export async function CaseStudies({ lang }: { lang: string }) {
   return (
     <section
       id="case-studies"
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-background"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-muted/30"
     >
-      <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gold/5 rounded-full blur-[100px] md:blur-[150px]" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gold/5 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
 
       <div className={`container mx-auto ${SPACING.container} relative z-10`}>
         <div className="mb-12 sm:mb-16 lg:mb-20 text-left max-w-5xl">
-          <span className="inline-block px-4 py-2 bg-gold text-foreground text-sm font-bold rounded-full mb-4 shadow-md">
+          <span className="inline-block px-4 py-2 bg-primary text-primary-foreground text-sm font-bold rounded-full mb-4 shadow-md">
             {copy.badge}
           </span>
           <h2
@@ -65,7 +65,7 @@ export async function CaseStudies({ lang }: { lang: string }) {
             <Link
               key={study.id}
               href={`/${urlSeg}/case-study/${slugify(study.title)}-${study.id}`}
-              className="group bg-card border border-border/50 rounded-xl sm:rounded-2xl overflow-hidden hover:border-gold/50 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-2 w-full block"
+              className="group bg-background border border-border rounded-xl sm:rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 w-full block"
             >
               <div className="relative h-44 sm:h-52 md:h-48 lg:h-56 overflow-hidden">
                 <Image
@@ -76,7 +76,7 @@ export async function CaseStudies({ lang }: { lang: string }) {
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-gold text-foreground text-xs font-bold rounded-full">
+                  <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full">
                     {study.industry}
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export async function CaseStudies({ lang }: { lang: string }) {
                   <span>{study.stats?.timeframe}</span>
                 </div>
 
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-gold transition-colors line-clamp-2">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-primary transition-colors line-clamp-2">
                   {study.title}
                 </h3>
 
@@ -99,10 +99,10 @@ export async function CaseStudies({ lang }: { lang: string }) {
 
                 <div className="flex items-center justify-between">
                   <div className="flex gap-3 text-xs text-muted-foreground">
-                    <span className="text-gold font-semibold">{study.stats?.costSaved}</span>
+                    <span className="text-primary font-semibold">{study.stats?.costSaved}</span>
                     <span>{copy.labels.saved}</span>
                   </div>
-                  <div className="flex items-center gap-1 sm:gap-2 text-gold font-semibold text-xs sm:text-sm group-hover:gap-2 sm:group-hover:gap-3 transition-all">
+                  <div className="flex items-center gap-1 sm:gap-2 text-primary font-semibold text-xs sm:text-sm group-hover:gap-2 sm:group-hover:gap-3 transition-all">
                     <span className="hidden sm:inline">{copy.labels.viewFull}</span>
                     <span className="sm:hidden">{copy.labels.viewStudy}</span>
                     <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -121,7 +121,7 @@ export async function CaseStudies({ lang }: { lang: string }) {
           </p>
           <Link
             href={localizedPath((lang === "ge" ? "ge" : "en") as SiteLocale, siteConfig.routes.bookMeeting)}
-            className="inline-block w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-gold text-foreground font-bold text-base sm:text-lg rounded-2xl hover:bg-gold/90 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-center"
+            className="inline-block w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-primary text-primary-foreground font-bold text-base sm:text-lg rounded-2xl hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-center"
           >
             <span className="hidden sm:inline">
               {lang === "ge" ? "Kostenlose Beratung buchen" : "Book a Free Consultation"}

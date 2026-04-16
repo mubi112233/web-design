@@ -79,7 +79,7 @@ export const ThemeSwitcher = () => {
   const { theme, setTheme } = useDesignSystem();
 
   const themes: { value: ThemeScheme; label: string; color: string }[] = [
-    { value: 'gold', label: 'Gold', color: 'bg-yellow-500' },
+    { value: 'gold', label: 'Blue', color: 'bg-blue-500' },
     { value: 'blue', label: 'Blue', color: 'bg-blue-500' },
     { value: 'green', label: 'Green', color: 'bg-green-500' },
     { value: 'purple', label: 'Purple', color: 'bg-purple-500' },

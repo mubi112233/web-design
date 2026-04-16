@@ -80,7 +80,7 @@ export default function BlogPostClient({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 mb-6 sm:mb-8 text-sm text-muted-foreground hover:text-gold transition-colors group"
+          className="inline-flex items-center gap-2 mb-6 sm:mb-8 text-sm text-muted-foreground hover:text-blue-400 transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="hidden sm:inline">{isGe ? "Zurück zum Blog" : "Back to Blog"}</span>
@@ -95,7 +95,7 @@ export default function BlogPostClient({
           className="mb-8 sm:mb-10"
         >
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-gold/10 text-gold text-xs sm:text-sm font-bold rounded-full">
+            <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-500/10 text-blue-400 text-xs sm:text-sm font-bold rounded-full">
               {post.category}
             </span>
             <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
@@ -116,7 +116,7 @@ export default function BlogPostClient({
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-base sm:text-lg flex-shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 font-bold text-base sm:text-lg flex-shrink-0">
                 {post.author.charAt(0)}
               </div>
               <div>
@@ -126,7 +126,7 @@ export default function BlogPostClient({
             </div>
             <button
               onClick={handleShare}
-              className="relative p-2.5 sm:p-3 rounded-full bg-gold/10 text-gold hover:bg-gold/20 transition-colors self-start sm:self-auto group"
+              className="relative p-2.5 sm:p-3 rounded-full bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-colors self-start sm:self-auto group"
               aria-label="Share"
             >
               <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -183,7 +183,7 @@ export default function BlogPostClient({
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
               {isGe ? "Kategorie" : "Category"}
             </h3>
-            <span className="px-4 py-2 bg-gold/10 text-gold text-sm font-medium rounded-lg">{post.category}</span>
+            <span className="px-4 py-2 bg-blue-500/10 text-blue-400 text-sm font-medium rounded-lg">{post.category}</span>
           </motion.div>
         )}
 
@@ -192,10 +192,10 @@ export default function BlogPostClient({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="mt-8 sm:mt-10 p-5 sm:p-6 lg:p-8 bg-gradient-to-br from-gold/5 via-gold/10 to-transparent border border-gold/20 rounded-xl sm:rounded-2xl shadow-sm"
+          className="mt-8 sm:mt-10 p-5 sm:p-6 lg:p-8 bg-gradient-to-br from-blue-500/5 via-blue-500/10 to-transparent border border-blue-500/20 rounded-xl sm:rounded-2xl shadow-sm"
         >
           <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center text-gold font-bold text-xl sm:text-2xl flex-shrink-0">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-500/10 flex items-center justify-center text-blue-400 font-bold text-xl sm:text-2xl flex-shrink-0">
               {post.author.charAt(0)}
             </div>
             <div>
@@ -214,7 +214,7 @@ export default function BlogPostClient({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="mt-8 sm:mt-10 p-6 sm:p-8 bg-gradient-to-br from-gold/10 via-gold/5 to-transparent border-2 border-gold/30 rounded-2xl text-center"
+          className="mt-8 sm:mt-10 p-6 sm:p-8 bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent border-2 border-blue-500/30 rounded-2xl text-center"
         >
           <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
             {isGe ? "Bereit, Ihre Rankings zu verbessern?" : "Ready to Improve Your Rankings?"}
@@ -228,7 +228,7 @@ export default function BlogPostClient({
                 localizedPath((lang === "ge" ? "ge" : "en") as SiteLocale, siteConfig.routes.bookMeeting)
               )
             }
-            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gold text-foreground text-sm sm:text-base font-bold rounded-xl hover:bg-gold/90 transition-all hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 text-white text-sm sm:text-base font-bold rounded-xl hover:bg-blue-500/90 transition-all hover:shadow-xl hover:scale-105"
           >
             {isGe ? "Jetzt starten" : "Get Started"}
           </button>
@@ -243,7 +243,7 @@ export default function BlogPostClient({
         >
           <button
             onClick={() => router.push(`/${lang}/blog`)}
-            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-card border border-border/50 text-foreground text-sm sm:text-base font-semibold rounded-xl hover:border-gold/50 hover:bg-card/80 transition-all hover:shadow-lg group"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-card border border-border/50 text-foreground text-sm sm:text-base font-semibold rounded-xl hover:border-blue-400/50 hover:bg-card/80 transition-all hover:shadow-lg group"
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="hidden sm:inline">{isGe ? "Alle Blog-Artikel ansehen" : "View All Blog Posts"}</span>

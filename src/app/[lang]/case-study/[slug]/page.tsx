@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchCaseStudiesServer } from "@/lib/api";
+import { Navbar } from "@/components/Navbar";
 import { getCopy } from "@/lib/copy";
 import { SPACING } from "@/lib/constants";
 import type { Metadata } from "next";
 import { absoluteUrl, hreflangAlternates, publicLocalePathSegment, SITE_URL } from "@/lib/site-url";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 interface CaseStudyData {
   caseStudyId: number;
@@ -45,7 +47,7 @@ export async function generateMetadata({
 
   if (!caseStudy) return {};
 
-  const title = `${caseStudy.company} - ${caseStudy.title} | DON SEO`;
+  const title = `${caseStudy.company} - ${caseStudy.title} | DON Recruitment`;
   const description = caseStudy.challenge.substring(0, 160);
   const pathAfterLocale = `case-study/${slug}`;
   const canonical = absoluteUrl(`/${urlSeg}/${pathAfterLocale}`);
@@ -55,8 +57,8 @@ export async function generateMetadata({
     title,
     description,
     keywords: currentLang === "ge"
-      ? ["Fallstudie", "SEO Ergebnisse", caseStudy.company, caseStudy.industry, "DON SEO"]
-      : ["case study", "SEO results", caseStudy.company, caseStudy.industry, "DON SEO"],
+      ? ["Fallstudie", "VA Ergebnisse", caseStudy.company, caseStudy.industry, "TalentSource"]
+      : ["case study", "VA staffing results", caseStudy.company, caseStudy.industry, "TalentSource"],
     alternates: { canonical, languages },
     openGraph: {
       title,
@@ -65,7 +67,7 @@ export async function generateMetadata({
       type: "article",
       locale: urlSeg === "de" ? "de_DE" : "en_US",
       alternateLocale: urlSeg === "de" ? "en_US" : "de_DE",
-      siteName: "DON SEO",
+      siteName: "TalentSource",
       images: caseStudy.image ? [{ url: caseStudy.image, width: 1200, height: 630, alt: caseStudy.company }] : [],
     },
     twitter: {
@@ -108,18 +110,28 @@ export default async function CaseStudyPage({
     "@type": "Article",
     "headline": caseStudy.title,
     "description": caseStudy.challenge,
-    "author": { "@type": "Organization", "name": "DON SEO", "url": SITE_URL },
-    "publisher": { "@type": "Organization", "name": "DON SEO", "logo": { "@type": "ImageObject", "url": absoluteUrl("/og-image.jpg") } },
+    "author": { "@type": "Organization", "name": "DON Recruitment", "url": SITE_URL },
+    "publisher": { "@type": "Organization", "name": "DON Recruitment", "logo": { "@type": "ImageObject", "url": absoluteUrl("/og-image.jpg") } },
     "image": caseStudy.image,
     "url": absoluteUrl(`/${publicLocalePathSegment(lang)}/case-study/${slug}`),
     "mainEntityOfPage": { "@type": "WebPage", "@id": absoluteUrl(`/${publicLocalePathSegment(lang)}/case-study/${slug}`) },
   };
 
   return (
-    <div className={`min-h-screen ${SPACING.sideMargin} bg-background`}>
+    <div className={`min-h-screen bg-background`}>
+      <Navbar />
+      <div className={`${SPACING.sideMargin}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+        />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([
+          { label: currentLang === 'ge' ? 'Startseite' : 'Home', href: `/${currentLang}` },
+          { label: currentLang === 'ge' ? 'Fallstudien' : 'Case Studies', href: `/${currentLang}/#case-studies` },
+          { label: caseStudy.company, href: `/${currentLang}/case-study/${slug}` },
+        ])) }}
       />
       <article className="max-w-5xl mx-auto py-6 sm:py-8 md:py-12 px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
@@ -289,6 +301,7 @@ export default async function CaseStudyPage({
           </Link>
         </footer>
       </article>
+    </div>
     </div>
   );
 }

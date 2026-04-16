@@ -32,45 +32,56 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
     if (options?.returnObjects) return options.defaultValue;
     if (typeof options?.defaultValue !== "undefined") return options.defaultValue;
 
-    if (key === "pricing.bannerBadge") return "Free Trial";
-    if (key === "pricing.bannerTitle") return "Book a Free Consultation";
-    if (key === "pricing.bannerSubtitle") return "Start with a quick call to find the right plan.";
-    if (key === "pricing.bannerPoints.noCommitment") return "No commitment";
-    if (key === "pricing.bannerPoints.cancelAnytime") return "Cancel anytime";
-    if (key === "pricing.bannerPoints.fullAccess") return "Full access";
-    if (key === "pricing.sectionBadge") return "Pricing";
-    if (key === "pricing.sectionTitle") return "Simple, transparent pricing";
-    if (key === "pricing.sectionDescription") return "Choose the plan that fits your business.";
-    if (key === "pricing.vaCountLabel") return "Select your SEO plan";
-    if (key === "pricing.vaCountHelper") return "Choose the right SEO package for your business.";
-    if (key === "pricing.perMonth") return "/mo";
-    if (key === "pricing.hoursUnit") return "hours";
-    if (key === "pricing.cta") return "Get Started";
-    if (key === "pricing.disclaimer") return "Pricing may vary based on requirements.";
-    if (key === "pricing.planNoSetupFee") return "No setup fee";
+    const isGerman = currentLang === 'ge';
+
+    if (key === "pricing.bannerBadge") return isGerman ? "Kostenlose Testphase" : "Free Trial";
+    if (key === "pricing.bannerTitle") return isGerman ? "Kostenlose Beratung buchen" : "Book a Free Consultation";
+    if (key === "pricing.bannerSubtitle") return isGerman ? "Starten Sie mit einem kurzen Gespräch, um den richtigen Plan zu finden." : "Start with a quick call to find the right plan.";
+    if (key === "pricing.bannerPoints.noCommitment") return isGerman ? "Keine Verpflichtung" : "No commitment";
+    if (key === "pricing.bannerPoints.cancelAnytime") return isGerman ? "Jederzeit kündbar" : "Cancel anytime";
+    if (key === "pricing.bannerPoints.fullAccess") return isGerman ? "Voller Zugriff" : "Full access";
+    if (key === "pricing.sectionBadge") return isGerman ? "Preise" : "Pricing";
+    if (key === "pricing.sectionTitle") return isGerman ? "Einfache, transparente Preise" : "Simple, transparent pricing";
+    if (key === "pricing.sectionDescription") return isGerman ? "Wählen Sie den Plan, der zu Ihrem Unternehmen passt." : "Choose the plan that fits your business.";
+    if (key === "pricing.vaCountLabel") return isGerman ? "Wie viele VAs benötigen Sie?" : "How many VAs do you need?";
+    if (key === "pricing.vaCountHelper") return isGerman ? "Wählen Sie die richtige Anzahl virtueller Assistenten." : "Choose the right number of virtual assistants for your team.";
+    if (key === "pricing.hoursUnit") return isGerman ? "Stunden" : "hours";
+    if (key === "pricing.cta") return isGerman ? "Jetzt starten" : "Get Started";
+    if (key === "pricing.disclaimer") return isGerman ? "Preise können je nach Anforderungen variieren." : "Pricing may vary based on requirements.";
+    if (key === "pricing.planNoSetupFee") return isGerman ? "Keine Einrichtungsgebühr" : "No setup fee";
 
     if (key === "pricing.startingFrom") {
       const price = options?.price ?? "";
       const hourly = options?.hourly ?? "";
-      return `Starting from €${price}/mo (≈ €${hourly}/hr)`;
+      return isGerman 
+        ? `Ab €${price}/Mon. (≈ €${hourly}/Std.)`
+        : `Starting from €${price}/mo (≈ €${hourly}/hr)`;
     }
     if (key === "pricing.bulkDiscount") {
       const percent = options?.percent ?? "";
-      return `${percent}% bulk discount active`;
+      return isGerman 
+        ? `${percent}% Mengenrabatt aktiv`
+        : `${percent}% bulk discount active`;
     }
     if (key === "pricing.bulkSavings") {
       const amount = options?.amount ?? "";
-      return `Save €${amount}`;
+      return isGerman 
+        ? `Sparen Sie €${amount}`
+        : `Save €${amount}`;
     }
     if (key === "pricing.bulkHint") {
       const count = options?.count ?? "";
       const suffix = options?.suffix ?? "";
       const percent = options?.percent ?? "";
-      return `Add ${count} more VA${suffix} to unlock ${percent}% discount`;
+      return isGerman
+        ? `Fügen Sie ${count} weitere VA${suffix} hinzu, um ${percent}% Rabatt zu erhalten`
+        : `Add ${count} more VA${suffix} to unlock ${percent}% discount`;
     }
     if (key === "pricing.planSetupFee") {
       const fee = options?.fee ?? "";
-      return `Setup fee: €${fee}`;
+      return isGerman
+        ? `Einrichtungsgebühr: €${fee}`
+        : `Setup fee: €${fee}`;
     }
 
     return key;
@@ -120,10 +131,10 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
   // Loading
   if (loading) {
     return (
-      <section id="pricing" className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-background text-foreground z-10 overflow-hidden">
+      <section id="pricing" className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-[hsl(220_85%_20%)] text-white z-10 overflow-hidden">
         <div className={`container mx-auto ${SPACING.container}`}>
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-gold" />
+            <Loader2 className="w-8 h-8 animate-spin text-blue-400" />
           </div>
         </div>
       </section>
@@ -133,13 +144,13 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
   // Error
   if (error) {
     return (
-      <section id="pricing" className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-background text-foreground z-10 overflow-hidden">
+      <section id="pricing" className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-[hsl(220_85%_20%)] text-white z-10 overflow-hidden">
         <div className={`container mx-auto ${SPACING.container}`}>
           <div className="text-center py-20">
-            <p className="text-muted-foreground mb-4">{error}</p>
+            <p className="text-white/60 mb-4">{error}</p>
             <button 
               type="button"
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-white/30 bg-white/10 hover:bg-white/20 text-white h-10 px-4 py-2"
               onClick={() => { setError(null); setLoading(true); }}
             >
               Retry
@@ -153,10 +164,10 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
   // No plans
   if (!loading && plans.length === 0) {
     return (
-      <section id="pricing" className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-background text-foreground z-10 overflow-hidden">
+      <section id="pricing" className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-[hsl(220_85%_20%)] text-white z-10 overflow-hidden">
         <div className={`container mx-auto ${SPACING.container}`}>
           <div className="text-center py-20">
-            <p className="text-muted-foreground">
+            <p className="text-white/60">
               {currentLang === 'ge'
                 ? 'Keine Preispläne verfügbar.'
                 : currentLang === 'en'
@@ -172,18 +183,17 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
   return (
     <motion.section
       id="pricing"
-      className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-background text-foreground z-10 overflow-hidden"
+      className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-[hsl(220_85%_20%)] text-white z-10 overflow-hidden"
       initial={{ opacity: 0, y: 200 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 1.2, ease: [0.6, -0.05, 0.01, 0.99] }}
     >
       {/* Background blobs */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gold/10 rounded-full blur-[100px] md:blur-[150px]" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gold/10 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-[100px] md:blur-[150px]" />
 
       <div className={`container mx-auto ${SPACING.container} relative z-10`}>
-
         {/* Free Trial Banner */}
         <motion.div
           className="mb-8 sm:mb-10 md:mb-12 max-w-5xl mx-auto"
@@ -193,7 +203,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <motion.div
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gold via-primary to-gold p-1 max-w-sm mx-auto md:max-w-none shadow-xl"
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 p-1 max-w-sm mx-auto md:max-w-none shadow-xl"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
@@ -216,9 +226,9 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                       animate={{ scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
                     </motion.div>
-                    <span className="text-gold font-bold text-sm sm:text-base uppercase tracking-wide">
+                    <span className="text-blue-400 font-bold text-sm sm:text-base uppercase tracking-wide">
                       {t("pricing.bannerBadge")}
                     </span>
                   </motion.div>
@@ -230,15 +240,15 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                   </p>
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm sm:text-base">
                     <div className="flex items-center gap-2">
-                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                       <span className="text-muted-foreground">{t("pricing.bannerPoints.noCommitment")}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                       <span className="text-muted-foreground">{t("pricing.bannerPoints.cancelAnytime")}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                       <span className="text-muted-foreground">{t("pricing.bannerPoints.fullAccess")}</span>
                     </div>
                   </div>
@@ -251,7 +261,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                 >
                   <button
                     type="button"
-                    className="relative text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 h-auto font-bold shadow-2xl hover:shadow-gold/50 transition-all duration-300 hover:scale-105 whitespace-nowrap bg-gold text-foreground rounded-xl hover:bg-gold/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+                    className="relative text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 h-auto font-bold shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 whitespace-nowrap bg-blue-500 text-foreground rounded-xl hover:bg-blue-500/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={() => router.push(`/${lang || currentLang || 'en'}/book-meeting`)}
                   >
                     <span className="relative z-10 flex items-center gap-2">
@@ -275,7 +285,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.span
-            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gold text-foreground text-xs sm:text-sm font-bold rounded-full mb-3 sm:mb-4 shadow-md"
+            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-500 text-foreground text-xs sm:text-sm font-bold rounded-full mb-3 sm:mb-4 shadow-md"
             whileHover={{ scale: 1.05 }}
           >
             {t("pricing.sectionBadge")}
@@ -306,14 +316,14 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
           </div>
 
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl pointer-events-none" />
-            <div className="absolute inset-0 rounded-lg sm:rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl bg-gold/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl pointer-events-none" />
+            <div className="absolute inset-0 rounded-lg sm:rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl bg-blue-500/20" />
             <select
               value={vaCount}
               onChange={(e) => setVaCount(Number(e.target.value))}
-              className="relative w-full p-3 sm:p-4 md:p-5 bg-card/90 backdrop-blur-sm border-2 border-border/50 hover:border-gold/70 focus:border-gold rounded-lg sm:rounded-xl text-center font-bold text-lg sm:text-xl lg:text-2xl focus:outline-none focus:ring-2 focus:ring-gold/20 transition-all duration-300 text-foreground appearance-none cursor-pointer shadow-md hover:shadow-lg hover:shadow-gold/10 active:scale-[0.98]"
+              className="relative w-full p-3 sm:p-4 md:p-5 bg-card/90 backdrop-blur-sm border-2 border-border/50 hover:border-blue-500/70 focus:border-blue-500 rounded-lg sm:rounded-xl text-center font-bold text-lg sm:text-xl lg:text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-foreground appearance-none cursor-pointer shadow-md hover:shadow-lg hover:shadow-blue-500/10 active:scale-[0.98]"
               style={{ backgroundImage: 'none' }}
-              aria-label="Select SEO plan level"
+              aria-label="Select your VA plan"
             >
               {Array.from({ length: MAX_VA_COUNT }, (_, i) => i + 1).map(num => (
                 <option key={num} value={num} className="text-foreground bg-card py-2 sm:py-3">
@@ -321,7 +331,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                 </option>
               ))}
             </select>
-            <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold/70 group-hover:text-gold transition-all duration-300 group-focus-within:rotate-180">
+            <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-400/70 group-hover:text-blue-400 transition-all duration-300 group-focus-within:rotate-180">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6">
                 <polyline points="6 9 12 15 18 9" />
               </svg>
@@ -336,7 +346,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gold/10 text-foreground text-xs sm:text-sm font-semibold rounded-full border border-gold/30 shadow-sm">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-500/10 text-foreground text-xs sm:text-sm font-semibold rounded-full border border-blue-500/30 shadow-sm">
                 {t("pricing.startingFrom", {
                   price: avgPricePerVA,
                   hourly: Math.round(avgPricePerVA / (avgHoursPerWeek * 4)),
@@ -350,11 +360,11 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="mt-4 sm:mt-5 p-2.5 sm:p-3 bg-gradient-to-r from-gold/20 via-gold/30 to-gold/20 backdrop-blur-sm border-2 border-gold/50 rounded-lg sm:rounded-xl text-center shadow-lg"
+              className="mt-4 sm:mt-5 p-2.5 sm:p-3 bg-gradient-to-r from-blue-400/20 via-blue-500/30 to-blue-500/20 backdrop-blur-sm border-2 border-blue-500/50 rounded-lg sm:rounded-xl text-center shadow-lg"
               role="alert"
               aria-live="polite"
             >
-              <p className="text-gold font-bold text-xs sm:text-sm md:text-base flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
+              <p className="text-blue-400 font-bold text-xs sm:text-sm md:text-base flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
                 <span className="text-base sm:text-lg" aria-hidden="true">🎉</span>
                 <span className="whitespace-nowrap">
                   {t("pricing.bulkDiscount", { percent: Math.round(discount * 100) })}
@@ -417,7 +427,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                 {/* Animated gradient border for highlighted plan */}
                 {plan.highlighted && (
                   <motion.div
-                    className="absolute -inset-0.5 bg-gradient-to-r from-gold via-primary to-gold rounded-2xl"
+                    className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 rounded-2xl"
                     animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     style={{ backgroundSize: "200% 200%" }}
@@ -426,16 +436,16 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
 
                 <div className={`relative rounded-2xl p-6 sm:p-8 md:p-10 transition-all duration-500 group h-full ${
                   plan.highlighted
-                    ? 'bg-gradient-to-br from-gold/95 via-gold/98 to-amber-500 text-foreground shadow-[0_25px_70px_-15px_hsl(45_75%_52%/0.5)]'
-                    : 'bg-card border-2 border-border/60 hover:border-gold/80 hover:shadow-[0_25px_70px_-15px_hsl(45_75%_52%/0.4)]'
+                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-500 text-white shadow-[0_25px_70px_-15px_hsl(220_100%_50%/0.5)]'
+                    : 'bg-white/5 border-2 border-white/10 hover:border-blue-400/80 hover:shadow-[0_25px_70px_-15px_hsl(220_100%_50%/0.4)]'
                 }`}>
 
                   {/* Top accent line */}
                   <motion.div
                     className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl ${
                       plan.highlighted
-                        ? 'bg-foreground/20'
-                        : 'bg-gradient-to-r from-transparent via-gold to-transparent'
+                        ? 'bg-white/20'
+                        : 'bg-gradient-to-r from-transparent via-blue-400 to-transparent'
                     }`}
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
@@ -445,7 +455,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                   {/* Badge */}
                   {localizedBadge && (
                     <motion.div
-                      className="absolute -top-4 right-6 bg-gradient-to-r from-foreground to-foreground/95 text-gold px-4 py-1.5 rounded-full text-xs font-bold shadow-xl flex items-center gap-1.5 border border-gold/20"
+                      className="absolute -top-4 right-6 bg-gradient-to-r from-white to-white/95 text-blue-600 px-4 py-1.5 rounded-full text-xs font-bold shadow-xl flex items-center gap-1.5 border border-blue-400/20"
                       initial={{ y: -10, opacity: 0 }}
                       whileInView={{ y: 0, opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.5 }}
@@ -463,15 +473,15 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
 
                   {/* Header */}
                   <div className="mb-6 relative z-10">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 text-foreground">
+                    <h3 className={`text-2xl sm:text-3xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300 ${plan.highlighted ? 'text-white' : 'text-white'}`}>
                       {localizedName}
                     </h3>
                     <div className="flex items-center gap-2">
-                      <p className={`text-sm font-medium ${plan.highlighted ? 'text-foreground/70' : 'text-muted-foreground'}`}>
+                      <p className={`text-sm font-medium ${plan.highlighted ? 'text-white/70' : 'text-white/60'}`}>
                         {localizedHours}
                       </p>
                       <span className={`px-2 py-0.5 text-xs rounded-full ${
-                        plan.highlighted ? 'bg-foreground/20 text-foreground' : 'bg-gold/10 text-gold'
+                        plan.highlighted ? 'bg-white/20 text-white' : 'bg-blue-500/20 text-blue-300'
                       }`}>
                         {parseInt(plan.hours)} {t('pricing.hoursUnit', { defaultValue: 'hours' })}
                       </span>
@@ -483,7 +493,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                     <div className="flex items-baseline gap-1">
                       <motion.span
                         className={`text-5xl sm:text-6xl font-bold tracking-tight ${
-                          plan.highlighted ? 'text-foreground' : 'text-gold'
+                          plan.highlighted ? 'text-white' : 'text-blue-400'
                         }`}
                         initial={{ scale: 0.5, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
@@ -491,16 +501,16 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                       >
                         €{Math.round(plan.price * (1 - discount) * vaCount)}
                       </motion.span>
-                      <span className={`text-base ml-1 ${plan.highlighted ? 'text-foreground/60' : 'text-muted-foreground'}`}>
+                      <span className={`text-base ml-1 ${plan.highlighted ? 'text-white/60' : 'text-white/60'}`}>
                         {t('pricing.perMonth', { defaultValue: '/mo' })}
                       </span>
                     </div>
                     {plan.setupFee > 0 ? (
-                      <p className={`text-xs mt-2 ${plan.highlighted ? 'text-foreground/60' : 'text-muted-foreground'}`}>
+                      <p className={`text-xs mt-2 ${plan.highlighted ? 'text-white/60' : 'text-white/60'}`}>
                         {t("pricing.planSetupFee", { fee: plan.setupFee })}
                       </p>
                     ) : (
-                      <p className={`text-xs mt-2 font-semibold flex items-center gap-1 ${plan.highlighted ? 'text-foreground' : 'text-gold'}`}>
+                      <p className={`text-xs mt-2 font-semibold flex items-center gap-1 ${plan.highlighted ? 'text-white' : 'text-blue-400'}`}>
                         <Check className="w-3.5 h-3.5" />
                         {t("pricing.planNoSetupFee")}
                       </p>
@@ -518,11 +528,11 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                         transition={{ delay: 0.5 + fIndex * 0.1 }}
                       >
                         <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 transition-all duration-300 group-hover:scale-110 ${
-                          plan.highlighted ? 'bg-foreground/20' : 'bg-gold/10 group-hover:bg-gold/20'
+                          plan.highlighted ? 'bg-white/20' : 'bg-blue-500/10 group-hover:bg-blue-500/20'
                         }`}>
-                          <Check className={`w-3 h-3 ${plan.highlighted ? 'text-foreground' : 'text-gold'}`} />
+                          <Check className={`w-3 h-3 ${plan.highlighted ? 'text-white' : 'text-blue-400'}`} />
                         </div>
-                        <span className={`text-sm leading-relaxed ${plan.highlighted ? 'text-foreground/85' : 'text-muted-foreground'}`}>
+                        <span className={`text-sm leading-relaxed ${plan.highlighted ? 'text-white/85' : 'text-white/70'}`}>
                           {feature}
                         </span>
                       </motion.li>
@@ -532,10 +542,10 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
                   {/* CTA Button */}
                   <button
                     type="button"
-                    className={`w-full px-6 sm:px-8 py-3 sm:py-4 font-bold text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 ${
+                    className={`w-full px-6 sm:px-8 py-3 sm:py-4 font-bold text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 ${
                       plan.highlighted
-                        ? 'bg-foreground text-background hover:bg-foreground/90 shadow-gold/50'
-                        : 'border-2 border-border hover:border-gold bg-card hover:bg-accent text-foreground'
+                        ? 'bg-white text-[hsl(220_85%_20%)] hover:bg-white/90'
+                        : 'border-2 border-white/20 hover:border-blue-400 bg-white/5 hover:bg-white/10 text-white'
                     }`}
                     onClick={() => router.push(`/${lang || currentLang || 'en'}/book-meeting`)}
                   >
@@ -549,7 +559,7 @@ export const PricingDynamic = ({ lang }: { lang: string }) => {
 
         {/* Disclaimer */}
         <motion.p
-          className="text-center text-muted-foreground mt-10 sm:mt-12 md:mt-16 lg:mt-20 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base px-4"
+          className="text-center text-white/60 mt-10 sm:mt-12 md:mt-16 lg:mt-20 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base px-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -6,37 +6,29 @@ import { SPACING } from "@/lib/constants";
 
 const tools = [
   { name: "Slack", category: "Communication" },
-  { name: "Trello", category: "Project Management" },
+  { name: "Zoom", category: "Communication" },
   { name: "Asana", category: "Project Management" },
+  { name: "Trello", category: "Project Management" },
+  { name: "Notion", category: "Project Management" },
+  { name: "Monday.com", category: "Project Management" },
+  { name: "ClickUp", category: "Project Management" },
   { name: "Google Workspace", category: "Productivity" },
   { name: "Microsoft 365", category: "Productivity" },
-  { name: "Canva", category: "Design" },
-  { name: "Adobe Suite", category: "Design" },
   { name: "HubSpot", category: "CRM" },
   { name: "Salesforce", category: "CRM" },
   { name: "Zendesk", category: "Support" },
   { name: "Intercom", category: "Support" },
-  { name: "Monday.com", category: "Project Management" },
-  { name: "ClickUp", category: "Project Management" },
-  { name: "WordPress", category: "CMS" },
-  { name: "Shopify", category: "E-commerce" },
-  { name: "Mailchimp", category: "Marketing" },
-  { name: "SEMrush", category: "SEO" },
-  { name: "Hootsuite", category: "Social Media" },
+  { name: "LinkedIn", category: "Recruitment" },
+  { name: "Greenhouse", category: "Recruitment" },
 ];
 
 const categoryLabels: Record<string, { en: string; ge: string }> = {
   Communication:        { en: "Communication",       ge: "Kommunikation" },
   "Project Management": { en: "Project Management",  ge: "Projektmanagement" },
   Productivity:         { en: "Productivity",         ge: "Produktivität" },
-  Design:               { en: "Design",               ge: "Design" },
   CRM:                  { en: "CRM",                  ge: "CRM" },
   Support:              { en: "Support",              ge: "Support" },
-  CMS:                  { en: "CMS",                  ge: "CMS" },
-  "E-commerce":         { en: "E-commerce",           ge: "E-Commerce" },
-  Marketing:            { en: "Marketing",            ge: "Marketing" },
-  SEO:                  { en: "SEO",                  ge: "SEO" },
-  "Social Media":       { en: "Social Media",         ge: "Social Media" },
+  Recruitment:          { en: "Recruitment",          ge: "Recruitment" },
 };
 
 export const ToolsIntegration = () => {
@@ -48,7 +40,7 @@ export const ToolsIntegration = () => {
 
   return (
     <motion.section
-      className="relative py-8 sm:py-10 md:py-12 lg:py-14 bg-background"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-14 bg-muted/30"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -63,11 +55,11 @@ export const ToolsIntegration = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-foreground">
             {isGe ? (
-              <>Funktioniert mit Ihren <span className="text-gold">vorhandenen Tools</span></>
+              <>Funktioniert mit Ihren <span className="text-primary">vorhandenen Tools</span></>
             ) : (
-              <>Works With Your <span className="text-gold">Existing Tools</span></>
+              <>Works With Your <span className="text-primary">Existing Tools</span></>
             )}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl">
@@ -89,13 +81,13 @@ export const ToolsIntegration = () => {
             {tools.map((tool, index) => (
               <motion.div
                 key={tool.name}
-                className="bg-card border-2 border-border rounded-lg p-3 sm:p-4 text-center hover:border-gold hover:shadow-lg hover:shadow-gold/10 transition-all duration-300 group"
+                className="bg-background border border-border rounded-lg p-3 sm:p-4 text-center hover:border-primary/50 hover:shadow-lg transition-all duration-300 group"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.04, ease: "easeOut" }}
               >
-                <p className="text-sm sm:text-base font-semibold text-foreground group-hover:text-gold transition-colors">
+                <p className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                   {tool.name}
                 </p>
                 <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">
@@ -107,14 +99,14 @@ export const ToolsIntegration = () => {
 
           {/* Callout */}
           <motion.div
-            className="bg-card rounded-lg sm:rounded-xl p-5 sm:p-6 md:p-8 text-center"
+            className="bg-background border border-border rounded-lg sm:rounded-xl p-5 sm:p-6 md:p-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           >
             <p className="text-base sm:text-lg text-foreground mb-3 sm:mb-4">
-              <span className="font-bold text-gold">
+              <span className="font-bold text-primary">
                 {isGe ? "Benötigen Sie ein bestimmtes Tool?" : "Need a specific tool?"}
               </span>{" "}
               {isGe ? "Einfach fragen." : "Just ask."}

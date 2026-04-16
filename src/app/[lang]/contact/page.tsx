@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ContactClient from "./ContactClient";
 import { absoluteUrl, hreflangAlternates, publicLocalePathSegment } from "@/lib/site-url";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 const SUPPORTED_LANGS = ["en", "ge", "de"];
 
@@ -13,19 +14,19 @@ export async function generateMetadata({
   const { lang: raw } = await params;
   const seg = publicLocalePathSegment(raw);
   const isDE = seg === "de";
-  const title = isDE ? "Kontakt — SEO Agentur" : "Contact — SEO Agency";
+  const title = isDE ? "Kontakt — Recruiting Agentur" : "Contact — Recruitment Agency";
   const description = isDE
-    ? "Kontaktieren Sie DON SEO für eine Beratung zu Suchmaschinenoptimierung und SEO-Dienstleistungen."
-    : "Contact DON SEO for a consultation about search engine optimization and SEO services.";
+    ? "Kontaktieren Sie DON Recruitment für eine Beratung zu Personalvermittlung, Executive Search und Talent Acquisition."
+    : "Contact DON Recruitment for a consultation about talent acquisition, executive search, and recruitment services.";
   const { languages } = hreflangAlternates("contact");
   const canonical = absoluteUrl(`/${seg}/contact`);
 
   return {
-    title: { absolute: `${title} | DON SEO` },
+    title: { absolute: `${title} | DON Recruitment` },
     description,
     keywords: isDE
-      ? ["kontakt DON SEO", "SEO anfrage", "SEO beratung"]
-      : ["contact DON SEO", "SEO inquiry", "SEO consultation"],
+      ? ["kontakt DON Recruitment", "recruiting anfrage", "personalberatung", "executive search kontakt"]
+      : ["contact DON Recruitment", "recruitment inquiry", "talent acquisition consultation", "hiring agency contact"],
     alternates: {
       canonical,
       languages,
@@ -37,8 +38,8 @@ export async function generateMetadata({
       type: "website",
       locale: isDE ? "de_DE" : "en_US",
       alternateLocale: isDE ? "en_US" : "de_DE",
-      siteName: "DON SEO",
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON SEO" }],
+      siteName: "DON Recruitment",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DON Recruitment" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -58,5 +59,18 @@ export default async function ContactPage({
   const { lang: rawLang } = await params;
   if (!SUPPORTED_LANGS.includes(rawLang?.toLowerCase())) notFound();
   const lang = rawLang === "ge" || rawLang === "de" ? "ge" : "en";
-  return <ContactClient lang={lang} />;
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { label: lang === "ge" ? "Startseite" : "Home", href: `/${lang}` },
+    { label: lang === "ge" ? "Kontakt" : "Contact", href: `/${lang}/contact` },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ContactClient lang={lang} />
+    </>
+  );
 }
